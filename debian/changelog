@@ -1,0 +1,6 @@
+tftp-hpa (5.2+20140608-4) experimental; urgency=medium
+
+  * tftpd.c/h: added patch for named pipes
+
+ -- Mathias Radtke <m.radtke@uib.de> Wed, 21 Dec 2016 14:26:00 +0100
+
