@@ -1,0 +1,106 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:		tftpd-hpa
+# Required-Start:	$local_fs $remote_fs $syslog $network
+# Required-Stop:	$local_fs $remote_fs $syslog $network
+# Default-Start:	2 3 4 5
+# Default-Stop:		0 1 6
+# Short-Description:	HPA's tftp server
+# Description:		Trivial File Transfer Protocol (TFTP) is a file transfer
+#			protocol, mainly to serve boot images over the network
+#			to other machines (PXE).
+### END INIT INFO
+
+PATH="/sbin:/bin:/usr/sbin:/usr/bin"
+DAEMON="/usr/sbin/in.tftpd"
+
+test -x "$DAEMON" || exit 0
+
+NAME="in.tftpd"
+DESC="HPA's tftpd"
+PIDFILE="/var/run/tftpd-hpa.pid"
+DEFAULTS="/etc/default/tftpd-hpa"
+
+set -e
+
+[ -r "$DEFAULTS" ] && . "$DEFAULTS"
+
+. /lib/lsb/init-functions
+
+
+do_start()
+{
+	# Ensure --secure and multiple server directories are not used at the
+	# same time
+	if [ "$(echo $TFTP_DIRECTORY | wc -w)" -ge 2 ] && \
+	   echo $TFTP_OPTIONS | grep -qs secure
+	then
+		echo
+		echo "When --secure is specified, exactly one directory can be specified."
+		echo "Please correct your $DEFAULTS."
+		exit 1
+	fi
+
+	# Ensure server directories exist
+	for d in $TFTP_DIRECTORY
+	do
+		if [ ! -d "$d" ]
+		then
+			echo "$d missing, aborting."
+			exit 1
+		fi
+	done
+
+	start-stop-daemon --start --quiet --oknodo --exec $DAEMON -- \
+		--listen --user $TFTP_USERNAME --address $TFTP_ADDRESS \
+		$TFTP_OPTIONS $TFTP_DIRECTORY
+}
+
+do_stop ()
+{
+	start-stop-daemon --stop --quiet --oknodo --name $NAME
+}
+
+do_reload ()
+{
+	start-stop-daemon --stop --quiet --oknodo --name $NAME --signal 1
+}
+
+case "$1" in
+	start)
+		init_is_upstart > /dev/null 2>&1 && exit 1
+
+		log_daemon_msg "Starting $DESC" "$NAME"
+		do_start
+		log_end_msg $?
+		;;
+
+	stop)
+		init_is_upstart > /dev/null 2>&1 && exit 0
+
+		log_daemon_msg "Stopping $DESC" "$NAME"
+		do_stop
+		log_end_msg $?
+		;;
+
+	restart|force-reload)
+		init_is_upstart > /dev/null 2>&1 && exit 1
+
+		log_daemon_msg "Restarting $DESC" "$NAME"
+		do_stop
+		sleep 1
+		do_start
+		log_end_msg $?
+		;;
+
+	status)
+		status_of_proc $DAEMON $NAME
+		;;
+
+	*)
+		echo "Usage: $0 {start|stop|restart|force-reload|status}" >&2
+		exit 3
+		;;
+esac
+

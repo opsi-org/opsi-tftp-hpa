@@ -2,15 +2,16 @@ Source: tftp-hpa
 Section: net
 Priority: extra
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-XSBC-Original-Maintainer: Daniel Baumann <daniel.baumann@progress-technologies.net>
-Uploaders: Otavio Salvador <otavio@debian.org>
-Build-Depends: debhelper (>= 8) | debhelper (>=7), autotools-dev, autoconf, libwrap0-dev
-Standards-Version: 3.9.2
-Homepage: http://www.kernel.org/pub/software/network/tftp/
+XSBC-Original-Maintainer: Ron Lee <ron@debian.org>
+Build-Depends: debhelper (>= 9), autoconf, autotools-dev, libwrap0-dev, po-debconf
+Standards-Version: 3.9.6.1
+Homepage: http://git.kernel.org/cgit/network/tftp/tftp-hpa.git
+Vcs-Browser: http://git.debian.org/?p=users/ron/tftp-hpa.git
+Vcs-Git: git://git.debian.org/users/ron/tftp-hpa.git
 
 Package: tftp-hpa
-Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Architecture: linux-any kfreebsd-any
+Depends: ${shlibs:Depends}
 Conflicts: tftp
 Description: HPA's tftp client
  Trivial File Transfer Protocol (TFTP) is a file transfer protocol, mainly to
@@ -21,13 +22,27 @@ Description: HPA's tftp client
  .
  This package contains the client.
 
+Package: tftp-hpa-dbg
+Section: debug
+Priority: extra
+Architecture: linux-any kfreebsd-any
+Depends: tftp-hpa (= ${binary:Version}), tftpd-hpa (= ${binary:Version})
+Description: HPA's tftp (debug)
+ Trivial File Transfer Protocol (TFTP) is a file transfer protocol, mainly to
+ serve boot images over the network to other machines (PXE).
+ .
+ tftp-hpa is an enhanced version of the BSD TFTP client and server. It
+ possesses a number of bugfixes and enhancements over the original.
+ .
+ This package contains the debugging symbols for both the client and the server.
+
 Package: tftpd-hpa
-Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, adduser
-Conflicts: tftpd, atftpd, opsi-atftpd
-Provides: tftpd
-Replaces: tftpd, opsi-atftpd
-Suggests: syslinux-common
+Architecture: linux-any kfreebsd-any
+Depends: ${shlibs:Depends}, adduser, ${misc:Depends}
+Conflicts: tftp-server, tftpd, atftpd
+Replaces: tftp-server, tftpd, atftpd
+Provides: tftp-server
+Suggests: pxelinux
 Description: HPA's tftp server
  Trivial File Transfer Protocol (TFTP) is a file transfer protocol, mainly to
  serve boot images over the network to other machines (PXE).
@@ -36,4 +51,3 @@ Description: HPA's tftp server
  possesses a number of bugfixes and enhancements over the original.
  .
  This package contains the server.
-

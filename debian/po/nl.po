@@ -1,0 +1,126 @@
+# Dutch translation of tftpd-hpa debconf templates.
+# Copyright (C) 2012 Jeroen Schot <schot@a-eskwadraat.nl>
+# This file is distributed under the same license as the tftpd-hpa package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tftp-hpa 5.2\n"
+"Report-Msgid-Bugs-To: tftp-hpa@packages.debian.org\n"
+"POT-Creation-Date: 2014-10-28 10:26+0100\n"
+"PO-Revision-Date: 2012-01-12 14:42+0100\n"
+"Last-Translator: Jeroen Schot <schot@a-eskwadraat.nl>\n"
+"Language-Team: Debian l10n Dutch <debian-l10n-dutch@lists.debian.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid "Dedicated system account for the tftpd-hpa TFTP daemon:"
+msgstr "Speciaal systeemaccount voor de tftpd-hpa-achtergronddienst:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid ""
+"The TFTP server must use a dedicated account for its operation so that the "
+"system's security is not compromised by running it with superuser privileges."
+msgstr ""
+"De TFTP-server moet een speciaal account gebruiken voor zijn werkzaamheden, "
+"want als hij met beheerdersrechten wordt uitgevoerd kan dit de beveiliging "
+"van het systeem in gevaar brengen."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid "Please choose that account's username."
+msgstr "Welke gebruikersnaam moet de account krijgen?"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:2001
+msgid "TFTP root directory:"
+msgstr "TFTP-hoofdmap:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:2001
+msgid ""
+"Please specify the directory that will be used as root for the TFTP server."
+msgstr "Welke map moet er worden gebruikt als hoofdmap voor de TFTP-server?"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid "TFTP server address and port:"
+msgstr "Adres en poort voor de TFTP-server:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid ""
+"Please specify an address and port to listen to in the form of [address][:"
+"port]."
+msgstr ""
+"Op welk adres en poort moet de server luisteren? Voer dit in als [adres][:"
+"poort]."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid ""
+"By default, the TFTP server listens to port 69 on all addresses and all "
+"interfaces ([::]:69). If no port is specified, it defaults to 69."
+msgstr ""
+"Standaard luistert de TFTP-server op poort 69 van alle adressen en "
+"interfaces ([::]:69). Als u geen poort opgeeft, zal de standaardwaarde 69 "
+"worden gebruikt."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid ""
+"Please note that numeric IPv6 addresses must be enclosed in square brackets "
+"to avoid ambiguity with the optional port information."
+msgstr ""
+"Merk op dat numeriek IPv6-adressen tussen vierkante haken moeten worden "
+"geplaatst om verwarring met de optionele poortinformatie te voorkomen."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid "TFTP server additional options:"
+msgstr "Extra opties voor TFTP-server:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid ""
+"Additional options can be passed to the TFTP server with this mechanism, "
+"please consult the tftpd(8) manpage for more information about available "
+"options."
+msgstr ""
+"Met dit mechanisme kunnen er extra opties aan de TFTP-server worden "
+"meegegeven. Zie de man-pagina van tftpd(8) voor meer informatie over de "
+"beschikbare opties."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid ""
+"Options other than the recommended '--secure' are rarely needed and only for "
+"special situations. If unsure, leave it at the recommended default value."
+msgstr ""
+"Andere opties dan de aanbevolen '--secure' zijn zelden nodig en alleen voor "
+"speciale omstandigheden. Als u twijfelt, laat dit dan op de aanbevolen "
+"standaard waarde."
+
+#~ msgid ""
+#~ "By default, the TFTP server listens to port 69 on all addresses and all "
+#~ "interfaces (0.0.0.0:69). If no port is specified, it defaults to 69."
+#~ msgstr ""
+#~ "Standaard luistert de TFTP-server op poort 69 van alle adressen en "
+#~ "interfaces (0.0.0.0:69). Als u geen poort opgeeft, zal de standaardwaarde "
+#~ "69 worden gebruikt."

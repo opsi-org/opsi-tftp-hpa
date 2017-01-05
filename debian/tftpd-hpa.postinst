@@ -1,0 +1,99 @@
+#!/bin/sh
+
+set -e
+
+. /usr/share/debconf/confmodule
+
+CONFFILE="/etc/default/tftpd-hpa"
+
+case "${1}" in
+	configure)
+		db_get tftpd-hpa/username
+		TFTP_USERNAME="${RET:-tftp}"
+
+		db_get tftpd-hpa/directory
+		TFTP_DIRECTORY="${RET:-/srv/tftp}"
+
+		db_get tftpd-hpa/address
+		TFTP_ADDRESS="${RET:-[::]:69}"
+
+		db_get tftpd-hpa/options
+		TFTP_OPTIONS="${RET}" # is ok when empty
+
+		db_stop
+
+		if [ ! -e "${CONFFILE}" ]
+		then
+
+cat > "${CONFFILE}" << EOF
+# /etc/default/tftpd-hpa
+
+TFTP_USERNAME="${TFTP_USERNAME}"
+TFTP_DIRECTORY="${TFTP_DIRECTORY}"
+TFTP_ADDRESS="${TFTP_ADDRESS}"
+TFTP_OPTIONS="${TFTP_OPTIONS} -s"
+EOF
+		fi
+
+		cp -a -f "${CONFFILE}" "${CONFFILE}.tmp"
+
+		# If the admin deleted or commented some variables but then set
+		# them via debconf, (re-)add them to the config file.
+
+		test -z "${TFTP_USERNAME}" || \
+		grep -Eq '^ *TFTP_USERNAME=' "${CONFFILE}" || \
+		echo "TFTP_USERNAME=" >> "${CONFFILE}"
+
+		test -z "${TFTP_DIRECTORY}" || \
+		grep -Eq '^ *TFTP_DIRECTORY=' "${CONFFILE}" || \
+		echo "TFTP_DIRECTORY=" >> "${CONFFILE}"
+
+		test -z "${TFTP_ADDRESS}" || \
+		grep -Eq '^ *TFTP_ADDRESS=' "${CONFFILE}" || \
+		echo "TFTP_ADDRESS=" >> "${CONFFILE}"
+
+		test -z "${TFTP_OPTIONS}" || \
+		grep -Eq '^ *TFTP_OPTIONS=' "${CONFFILE}" || \
+		echo "TFTP_OPTIONS=" >> "${CONFFILE}"
+
+		sed -e "s|^ *TFTP_USERNAME=.*|TFTP_USERNAME=\"${TFTP_USERNAME}\"|" \
+		    -e "s|^ *TFTP_DIRECTORY=.*|TFTP_DIRECTORY=\"${TFTP_DIRECTORY}\"|" \
+		    -e "s|^ *TFTP_ADDRESS=.*|TFTP_ADDRESS=\"${TFTP_ADDRESS}\"|" \
+		    -e "s|^ *TFTP_OPTIONS=.*|TFTP_OPTIONS=\"${TFTP_OPTIONS}\"|" \
+		< "${CONFFILE}" > "${CONFFILE}.tmp"
+
+		mv -f "${CONFFILE}.tmp" "${CONFFILE}"
+
+		if ! getent passwd "${TFTP_USERNAME}" > /dev/null 2>&1
+		then
+			adduser --system --home $(echo ${TFTP_DIRECTORY} | awk '{ print $1 }') --no-create-home --quiet --gecos 'tftp daemon' --group ${TFTP_USERNAME}
+		else
+			echo "tftpd user (${TFTP_USERNAME}) already exists, doing nothing."
+		fi
+
+		for _DIRECTORY in ${TFTP_DIRECTORY}
+		do
+			if [ ! -d "${_DIRECTORY}" ]
+			then
+				mkdir -p "${_DIRECTORY}"
+				chown root:nogroup ${_DIRECTORY} -R
+			else
+				echo
+				echo "tftpd-hpa directory (${_DIRECTORY}) already exists, doing nothing."
+			fi
+		done
+		;;
+
+	abort-upgrade|abort-remove|abort-deconfigure)
+
+		;;
+
+	*)
+		echo "postinst called with unknown argument \`${1}'" >&2
+		exit 1
+		;;
+esac
+
+#DEBHELPER#
+
+exit 0

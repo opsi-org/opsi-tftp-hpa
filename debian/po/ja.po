@@ -1,0 +1,125 @@
+# Japanese translation of tftpd-hpa debconf templates.
+# Copyright (C) 2009-2010 Hideki Yamane <henrich@debian.or.jp>
+# This file is distributed under the same license as the tftpd-hpa package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tftp-hpa 5.0-14\n"
+"Report-Msgid-Bugs-To: tftp-hpa@packages.debian.org\n"
+"POT-Creation-Date: 2014-10-28 10:26+0100\n"
+"PO-Revision-Date: 2010-05-04 07:21+0200\n"
+"Last-Translator: Hideki Yamane (Debian-JP) <henrich@debian.or.jp>\n"
+"Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid "Dedicated system account for the tftpd-hpa TFTP daemon:"
+msgstr "tftpd-hpa TFTP デーモン専用のシステムアカウント:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid ""
+"The TFTP server must use a dedicated account for its operation so that the "
+"system's security is not compromised by running it with superuser privileges."
+msgstr ""
+"TFTP サーバはその動作について専用のアカウントを使うようになっているため、管理"
+"者特権で動作していてもシステムのセキュリティは侵害されません。"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid "Please choose that account's username."
+msgstr "アカウントのユーザ名を選んでください。"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:2001
+msgid "TFTP root directory:"
+msgstr "TFTP の root ディレクトリ:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:2001
+msgid ""
+"Please specify the directory that will be used as root for the TFTP server."
+msgstr ""
+"TFTP サーバの root ディレクトリとして利用するディレクトリを指定してください。"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid "TFTP server address and port:"
+msgstr "TFTP サーバのアドレスとポート番号"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid ""
+"Please specify an address and port to listen to in the form of [address][:"
+"port]."
+msgstr ""
+"[address][:port] という形で listen するアドレスとポート番号を指定してくださ"
+"い。"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid ""
+"By default, the TFTP server listens to port 69 on all addresses and all "
+"interfaces ([::]:69). If no port is specified, it defaults to 69."
+msgstr ""
+"デフォルトでは、TFTP サーバは全てのアドレス上の69番ポートと、全てのインター"
+"フェイス上で listen します ([::]:69)。ポートが指定されない場合は、デフォルト"
+"値は 69 です。"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid ""
+"Please note that numeric IPv6 addresses must be enclosed in square brackets "
+"to avoid ambiguity with the optional port information."
+msgstr ""
+"数字で表記される IPv6 アドレスは、追加のポート情報との混同を避けるため、角"
+"カッコ ([]) で括られなければならないことに注意してください。"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid "TFTP server additional options:"
+msgstr "TFTP サーバの追加オプション"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid ""
+"Additional options can be passed to the TFTP server with this mechanism, "
+"please consult the tftpd(8) manpage for more information about available "
+"options."
+msgstr ""
+"この方法で TFTP サーバに追加オプションを渡すことができます。利用可能なオプ"
+"ションについての詳細は、tftpd(8) マニュアルページを確認してください。"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid ""
+"Options other than the recommended '--secure' are rarely needed and only for "
+"special situations. If unsure, leave it at the recommended default value."
+msgstr ""
+"推奨されている '--secure' 以外のオプションが必要なことは稀で、特定の状況にの"
+"み必要とされます。良く分からない場合は、推奨であるデフォルト値のままにしてお"
+"いてください。"
+
+#~ msgid ""
+#~ "By default, the TFTP server listens to port 69 on all addresses and all "
+#~ "interfaces (0.0.0.0:69). If no port is specified, it defaults to 69."
+#~ msgstr ""
+#~ "デフォルトでは、TFTP サーバは全てのアドレス上の69番ポートと、全てのイン"
+#~ "ターフェイス上で listen します (0.0.0.0:69)。ポートが指定されない場合は、"
+#~ "デフォルト値は 69 です。"

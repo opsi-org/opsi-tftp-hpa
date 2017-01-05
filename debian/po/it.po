@@ -1,0 +1,127 @@
+# Italian translation of tftpd-hpa debconf templates.
+# Copyright (C) 2009-2010 Vincenzo Campanella <vinz65@gmail.com>
+# This file is distributed under the same license as the tftpd-hpa package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tftp-hpa 5.0-15\n"
+"Report-Msgid-Bugs-To: tftp-hpa@packages.debian.org\n"
+"POT-Creation-Date: 2014-10-28 10:26+0100\n"
+"PO-Revision-Date: 2010-09-17 13:35+0100\n"
+"Last-Translator: Vincenzo Campanella <vinz65@gmail.com>\n"
+"Language-Team: Italian <tp@lists.linux.it>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid "Dedicated system account for the tftpd-hpa TFTP daemon:"
+msgstr "Account di sistema dedicato per il demone TFTP di tftpd-hpa:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid ""
+"The TFTP server must use a dedicated account for its operation so that the "
+"system's security is not compromised by running it with superuser privileges."
+msgstr ""
+"Il server TFTP deve utilizzare un account dedicato per eseguire le proprie "
+"operazioni, in modo che la sicurezza del sistema non rischi di essere "
+"compromessa eseguendolo con privilegi di superutente."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid "Please choose that account's username."
+msgstr "Scegliere il nome utente di tale account."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:2001
+msgid "TFTP root directory:"
+msgstr "Directory radice TFTP:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:2001
+msgid ""
+"Please specify the directory that will be used as root for the TFTP server."
+msgstr ""
+"Specificare la directory che verrà utilizzata come radice per il server TFTP."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid "TFTP server address and port:"
+msgstr "Indirizzo e porta del server TFTP:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid ""
+"Please specify an address and port to listen to in the form of [address][:"
+"port]."
+msgstr ""
+"Specificare un indirizzo e una porta, sotto forma di [indirizzo][:porta]."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid ""
+"By default, the TFTP server listens to port 69 on all addresses and all "
+"interfaces ([::]:69). If no port is specified, it defaults to 69."
+msgstr ""
+"In modo predefinito il server TFTP si pone in ascolto sulla posta 69 su "
+"tutti gli indirizzi e tutte le interfacce ([::]:69). Se non viene "
+"specificata alcuna porta viene utilizzata quella predefinita (la 69)."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid ""
+"Please note that numeric IPv6 addresses must be enclosed in square brackets "
+"to avoid ambiguity with the optional port information."
+msgstr ""
+"Notare che gli indirizzi numerici IPv6 devono essere racchiusi fra parentesi "
+"quadre al fine di evitare ambiguità con l'informazione facoltativa della "
+"porta."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid "TFTP server additional options:"
+msgstr "Opzioni addizionali per il server TFTP:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid ""
+"Additional options can be passed to the TFTP server with this mechanism, "
+"please consult the tftpd(8) manpage for more information about available "
+"options."
+msgstr ""
+"È possibile passare al server TFTP delle opzioni addizionali utilizzando "
+"questo meccanismo; per maggiori informazioni sulle opzioni disponibili "
+"consultare le pagine del manuale di tftpd(8)."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid ""
+"Options other than the recommended '--secure' are rarely needed and only for "
+"special situations. If unsure, leave it at the recommended default value."
+msgstr ""
+"Opzioni all'infuori di quella, raccomandata, «--secure» sono raramente "
+"necessarie e solo per situazioni particolari. In caso di dubbio, lasciare il "
+"valore predefinito."
+
+#~ msgid ""
+#~ "By default, the TFTP server listens to port 69 on all addresses and all "
+#~ "interfaces (0.0.0.0:69). If no port is specified, it defaults to 69."
+#~ msgstr ""
+#~ "In modo predefinito il server TFTP si pone in ascolto sulla posta 69 su "
+#~ "tutti gli indirizzi e tutte le interfacce (0.0.0.0:69). Se non viene "
+#~ "specificata alcuna porta viene utilizzata quella predefinita (la 69)."

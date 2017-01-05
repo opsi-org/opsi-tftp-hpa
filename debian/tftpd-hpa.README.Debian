@@ -1,0 +1,30 @@
+tftpd-hpa
+---------
+
+Note that you need to add '--create' to TFTP_OPTIONS in /etc/default/tftpd-hpa
+if you intend to upload files to the tftp server that do not already exist on
+the server.
+
+Instead of manually editing the file, a simple:
+
+  # dpkg-reconfigure -plow tftpd-hpa
+
+let's you configure additional options more conveniently.
+
+
+With Compaq Professional Workstation XP1000 machines acting as clients you might
+need to use "-r blksize" option to inhibit OACK being sent out as they reply to
+regular TFTP port instead of the port where OACK originated. This is SRM
+firmware bug on those machines. Many thanks to Steffen Grunewald for tracking
+this down.
+
+
+If you're running a kernel configuration that has no IPv6 support (note: all
+Debian kernels come with IPv6 support), you need to use the "-4" option,
+otherwise tftpd-hpa refuses to start with:
+
+  cannot open IPv6 socket, disable IPv6: Address family not supported by
+  protocol
+  Cannot set nonblock flag on socket: Bad file descriptor
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 15 Aug 2009 22:34:42 +0200

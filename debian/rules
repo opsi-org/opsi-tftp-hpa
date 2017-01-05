@@ -1,106 +1,83 @@
 #!/usr/bin/make -f
-# Sample debian/rules that uses debhelper. 
-# GNU copyright 1997 by Joey Hess.
 #
-# This version is for a hypothetical package that builds an
-# architecture-dependant package, as well as an architecture-independent
-# package.
+# Copyright 2003 - 2014 Ron Lee.
 
-# Uncomment this to turn on verbose mode. 
-#export DH_VERBOSE=1
+SHELL = /bin/bash
 
-# This is the debhelper compatability version to use.
-#export DH_COMPAT=4
-
-# This has to be exported to make some magic below work.
 export DH_OPTIONS
 
-configure: configure-stamp
+NUM_CPUS = $(shell getconf _NPROCESSORS_ONLN 2>/dev/null)
+PARALLEL = $(subst parallel=,,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+NJOBS    = -j$(or $(PARALLEL),$(NUM_CPUS),1)
 
-configure-stamp:
+DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+
+
+clean:
 	dh_testdir
-	# Add here commands to configure the package.
-	./configure --prefix=/usr --mandir=/usr/share/man --enable-debug
-
-	touch configure-stamp
-
-build: configure-stamp build-stamp
-build-stamp:
-	dh_testdir
-
-	# Add here commands to compile the package.
-	$(MAKE)
-	# For the woody backport
-	#$(MAKE) LDFLAGS="--static" LIBREADLINE="-lreadline -lncurses -lpthread" LIBWRAP="-lwrap -lnsl"
-	touch build-stamp
-
-clean: clean-patched
-
-clean-patched:
-	dh_testdir
-	dh_testroot
-	debconf-updatepo
-	rm -f build-stamp configure-stamp
-
-	# Add here commands to clean up after the build process.
-	-$(MAKE) clean
-	-$(MAKE) distclean
-
+	$(MAKE) spotless
+	$(RM) *-stamp
 	dh_clean
+	debconf-updatepo
 
-install: DH_OPTIONS=
-install: build
+
+configure: configure.in aclocal.m4
+	dh_testdir
+	$(MAKE) autoconf
+
+config.status: configure
+	dh_testdir
+	./configure --host=$(DEB_HOST_GNU_TYPE)   \
+		    --build=$(DEB_BUILD_GNU_TYPE) \
+		    --prefix=/usr                 \
+		    --without-readline
+
+
+build: build-arch
+build-arch: build-arch-stamp
+build-indep:
+
+build-arch-stamp: config.status
+	dh_testdir
+	$(MAKE) $(NJOBS) all
+	touch $@
+
+
+install: install-arch
+install-arch: build-arch install-arch-stamp
+install-indep:
+
+install-arch-stamp: build-arch-stamp
 	dh_testdir
 	dh_testroot
-	dh_clean -k
-	dh_installdirs
-
-	# Add here commands to install the package into debian/tmp.
-	$(MAKE) install prefix=`pwd`/debian/tmp/usr \
-			mandir=`pwd`/debian/tmp/usr/share/man
-
-	dh_movefiles
-	dh_installdocs -popsi-atftp
-	dh_installdocs -popsi-atftpd
-
-# Build architecture-independent files here.
-# Pass -i to all debhelper commands in this target to reduce clutter.
-binary-indep: build install
-
-# Build architecture-dependent files here.
-# Pass -a to all debhelper commands in this target to reduce clutter.
-binary-arch: DH_OPTIONS=-a
-binary-arch: build install
-	dh_testdir
-	dh_testroot
-	dh_installdebconf
+	dh_prep
+	$(MAKE) install INSTALLROOT=$(CURDIR)/debian/tmp
+	dh_install
 	dh_installinit
-#	dh_installexamples
-#	dh_installcron
-#	dh_installmanpages
-#	dh_installinfo
-	dh_installchangelogs  Changelog
-	dh_strip
-	dh_link
+	dh_installexamples
+	touch $@
+
+
+binary: binary-arch
+binary-indep:
+
+binary-arch: install-arch
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs
+	dh_installdocs
+	dh_installdebconf
+	dh_strip --dbg-package=tftp-hpa-dbg
 	dh_compress
 	dh_fixperms
-	# You may want to make some executables suid here.
-	#dh_suidregister
 	dh_installdeb
 	dh_shlibdeps
 	dh_gencontrol
 	dh_md5sums
 	dh_builddeb
 
-binary: binary-indep binary-arch
 
-#patch: patch-stamp
-#patch-stamp:
-#	dpatch apply-all
-#	dpatch call-all -a=pkg-info >patch-stamp
-#
-#unpatch:
-#	dpatch deapply-all
-#	rm -rf patch-stamp debian/patched
-
-.PHONY: build clean binary-indep binary-arch binary install
+.PHONY: clean build build-arch build-indep \
+	install install-arch install-indep \
+	binary binary-arch binary-indep

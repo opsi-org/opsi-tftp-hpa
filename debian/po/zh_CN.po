@@ -1,0 +1,104 @@
+# Simplified Chinese translation of tftpd-hpa debconf templates.
+# Copyright (C) 2009 Deng Xiyue <manphiz-guest@users.alioth.debian.org>
+# This file is distributed under the same license as the tftpd-hpa package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tftp-hpa 5.0-14\n"
+"Report-Msgid-Bugs-To: tftp-hpa@packages.debian.org\n"
+"POT-Creation-Date: 2014-10-28 10:26+0100\n"
+"PO-Revision-Date: 2009-03-26 16:48+0800\n"
+"Last-Translator: Deng Xiyue <manphiz-guest@users.alioth.debian.org>\n"
+"Language-Team: Debian Chinese GB <debian-chinese-gb@lists.debian.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid "Dedicated system account for the tftpd-hpa TFTP daemon:"
+msgstr "指定操作 tftpd-hpa TFTP 守护进程的专用系统帐户："
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid ""
+"The TFTP server must use a dedicated account for its operation so that the "
+"system's security is not compromised by running it with superuser privileges."
+msgstr ""
+"TFTP 服务器必须使用一个专用的账户来进行操作，这样就不会因为使用超级用户权限运"
+"行而破坏系统的安全。"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid "Please choose that account's username."
+msgstr "请选择账户的用户名。"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:2001
+msgid "TFTP root directory:"
+msgstr "TFTP 根目录："
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:2001
+msgid ""
+"Please specify the directory that will be used as root for the TFTP server."
+msgstr "请指定用作 TFTP 服务器根目录的目录。"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid "TFTP server address and port:"
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid ""
+"Please specify an address and port to listen to in the form of [address][:"
+"port]."
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid ""
+"By default, the TFTP server listens to port 69 on all addresses and all "
+"interfaces ([::]:69). If no port is specified, it defaults to 69."
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid ""
+"Please note that numeric IPv6 addresses must be enclosed in square brackets "
+"to avoid ambiguity with the optional port information."
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid "TFTP server additional options:"
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid ""
+"Additional options can be passed to the TFTP server with this mechanism, "
+"please consult the tftpd(8) manpage for more information about available "
+"options."
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid ""
+"Options other than the recommended '--secure' are rarely needed and only for "
+"special situations. If unsure, leave it at the recommended default value."
+msgstr ""

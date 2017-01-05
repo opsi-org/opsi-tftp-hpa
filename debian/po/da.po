@@ -1,0 +1,122 @@
+# Danish translation of tftpd-hpa debconf templates.
+# 2010 Joe Hansen <joedalton2@yahoo.dk>
+# This file is distributed under the same license as the tftpd-hpa package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tftp-hpa\n"
+"Report-Msgid-Bugs-To: tftp-hpa@packages.debian.org\n"
+"POT-Creation-Date: 2014-10-28 10:26+0100\n"
+"PO-Revision-Date: 2010-09-25 17:30+01:00\n"
+"Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
+"Language-Team: Danish <debian-l10n-danish@lists.debian.org> \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid "Dedicated system account for the tftpd-hpa TFTP daemon:"
+msgstr "Dedikeret systemkonto til tftpd-hpa's TFTP-dæmon:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid ""
+"The TFTP server must use a dedicated account for its operation so that the "
+"system's security is not compromised by running it with superuser privileges."
+msgstr ""
+"TFTP-serveren skal bruge en dedikeret konto til sine handlinger, så "
+"systemets sikkerhed ikke kompromiteres ved at køre den med "
+"superbrugerrettigheder."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid "Please choose that account's username."
+msgstr "Vælg venligst den kontos brugernavn."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:2001
+msgid "TFTP root directory:"
+msgstr "TFTP-rodmappe:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:2001
+msgid ""
+"Please specify the directory that will be used as root for the TFTP server."
+msgstr "Angiv venligst mappen som vil blive brugt som rod for TFTP-serveren."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid "TFTP server address and port:"
+msgstr "TFTP-serveradresse og -port:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid ""
+"Please specify an address and port to listen to in the form of [address][:"
+"port]."
+msgstr ""
+"Angiv venligst en adresse og port at lytte på i form af [adresse][:port]."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid ""
+"By default, the TFTP server listens to port 69 on all addresses and all "
+"interfaces ([::]:69). If no port is specified, it defaults to 69."
+msgstr ""
+"Som standard, lytter TFTP-serveren på port 69 for alle adresser og alle "
+"grænseflader ([::]:69). Hvis ingen port er angivet, er standarden 69."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid ""
+"Please note that numeric IPv6 addresses must be enclosed in square brackets "
+"to avoid ambiguity with the optional port information."
+msgstr ""
+"Bemærk venligst at numeriske IPv6-adresser skal vedlægges i firkantede "
+"parenteser for at undgå tvetydighed med den frivillige portinformation."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid "TFTP server additional options:"
+msgstr "Yderligere tilvalg for TFTP-server:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid ""
+"Additional options can be passed to the TFTP server with this mechanism, "
+"please consult the tftpd(8) manpage for more information about available "
+"options."
+msgstr ""
+"Yderligere tilvalg kan videresendes til TFTP-serveren med denne mekanisme, "
+"konsulter venligst manualsiden tftpd(8) for yderligere information om "
+"tilgængelige tilvalg."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid ""
+"Options other than the recommended '--secure' are rarely needed and only for "
+"special situations. If unsure, leave it at the recommended default value."
+msgstr ""
+"Tilvalg udover den anbefalede '--secure' er sjældent nødvendigt og kun til "
+"specielle situationer. Hvis usikker, behold den anbefalede standardværdi."
+
+#~ msgid ""
+#~ "By default, the TFTP server listens to port 69 on all addresses and all "
+#~ "interfaces (0.0.0.0:69). If no port is specified, it defaults to 69."
+#~ msgstr ""
+#~ "Som standard, lytter TFTP-serveren på port 69 for alle adresser og alle "
+#~ "grænseflader (0.0.0.0:69). Hvis ingen port er angivet, er standarden 69."

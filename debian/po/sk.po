@@ -1,0 +1,121 @@
+# Slovak translation of tftpd-hpa debconf templates.
+# Copyright (C) 2013 Slavko <linux@slavino.sk>
+# This file is distributed under the same license as the tftpd-hpa package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tftp-hpa 5.2-4\n"
+"Report-Msgid-Bugs-To: tftp-hpa@packages.debian.org\n"
+"POT-Creation-Date: 2014-10-28 10:26+0100\n"
+"PO-Revision-Date: 2013-03-28 19:21+0100\n"
+"Last-Translator: Slavko <linux@slavino.sk>\n"
+"Language-Team: slovenčina <debian-l10n-slovak@lists.debian.org>\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-POFile-SpellExtra: secure tftpd-hpa superpoužívateľa IPv6 69 TFTP\n"
+"X-POFile-SpellExtra: tftpd\n"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid "Dedicated system account for the tftpd-hpa TFTP daemon:"
+msgstr "Vyhradený systémový účet pre démona TFTP tftpd-hpa:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid ""
+"The TFTP server must use a dedicated account for its operation so that the "
+"system's security is not compromised by running it with superuser privileges."
+msgstr ""
+"Server TFTP musí na svoju činnosť používať vyhradený účet, aby nebola "
+"ohrozená systémová bezpečnosť jeho spúšťaním s právami superpoužívateľa."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:1001
+msgid "Please choose that account's username."
+msgstr "Prosím, zvoľte používateľské meno účtu."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:2001
+msgid "TFTP root directory:"
+msgstr "Koreňový adresár TFTP:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:2001
+msgid ""
+"Please specify the directory that will be used as root for the TFTP server."
+msgstr "Prosím, zadajte adresár, ktorý bude použitý ako koreň servera TFTP."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid "TFTP server address and port:"
+msgstr "Adresa a port servera TFTP:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid ""
+"Please specify an address and port to listen to in the form of [address][:"
+"port]."
+msgstr "Prosím, zadajte adresu a port načúvania vo forme [adresa][:port]."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+#, fuzzy
+#| msgid ""
+#| "By default, the TFTP server listens to port 69 on all addresses and all "
+#| "interfaces (0.0.0.0:69). If no port is specified, it defaults to 69."
+msgid ""
+"By default, the TFTP server listens to port 69 on all addresses and all "
+"interfaces ([::]:69). If no port is specified, it defaults to 69."
+msgstr ""
+"Predvolene server TFTP načúva na porte 69 na všetkých adresách a všetkých "
+"rozhraniach (0.0.0.0:69). Ak nie je zadaný port, je predvolene použitý port "
+"69."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:3001
+msgid ""
+"Please note that numeric IPv6 addresses must be enclosed in square brackets "
+"to avoid ambiguity with the optional port information."
+msgstr ""
+"Prosím, pamätajte, že číselné adresy IPv6 musia byť uzatvorené v lomených "
+"zátvorkách, aby sa predišlo zámene s voliteľnou informáciou o porte."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid "TFTP server additional options:"
+msgstr "Dodatočné voľby servera TFTP:"
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid ""
+"Additional options can be passed to the TFTP server with this mechanism, "
+"please consult the tftpd(8) manpage for more information about available "
+"options."
+msgstr ""
+"Pomocou tohoto mechanizmu možno serveru TFTP poslať dodatočné voľby, prosím, "
+"nahliadnite do manuálovej stránky tftpd(8) s ďalšími informáciami o "
+"dostupných voľbách."
+
+#. Type: string
+#. Description
+#: ../tftpd-hpa.templates:4001
+msgid ""
+"Options other than the recommended '--secure' are rarely needed and only for "
+"special situations. If unsure, leave it at the recommended default value."
+msgstr ""
+"Iné voľby ako odporúčané „--secure” sú potrebné málokedy a len v špeciálnych "
+"situáciách. Ak si nie ste istý, nechajte odporúčanú predvolenú hodnotu."
