@@ -1,12 +1,15 @@
 Summary: The client for the Trivial File Transfer Protocol (TFTP).
 Name: tftp
 Version:        5.2
-Release:        5
+Release:        6
 License: BSD
 Group: Applications/Internet
 #Source0: http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.gz
+Source:         tftp-hpa_5.2-6.tar.gz
 BuildRequires: tcp_wrappers-devel
-BuildRoot: %{_tmppath}/%{name}-root
+#BuildRoot: %{_tmppath}/%{name}-root
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
 %description
 The Trivial File Transfer Protocol (TFTP) is normally used only for
 booting diskless workstations.  The tftp package provides the user
