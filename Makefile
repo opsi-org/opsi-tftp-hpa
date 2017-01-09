@@ -35,7 +35,7 @@ localdistclean: localclean
 	find . -type f \( -name \*.orig -o -name \*.rej \) | xargs rm -f
 
 spotless: distclean
-	rm -f configure aconfig.h.in tftp.spec
+	#rm -f configure aconfig.h.in tftp.spec
 
 autoconf: configure aconfig.h.in
 

@@ -18,17 +18,17 @@ rm ${destdir}/${packagename}*.spec    2>/dev/null || true
 
 cp rpm/${packagename}.spec /tmp/
 cat /tmp/${packagename}.spec \
-	| sed "s/^Version:.*/Version:        ${version}/" \
-	| sed "s/^Release:.*/Release:        ${release}/" \
-	| sed "s/^Source:.*/Source:         ${packagename}_${version}-${release}.tar.gz/" \
-	| sed -ne '1,/%changelog/p' \
-	> rpm/${packagename}.spec
+        | sed "s/^Version:.*/Version:        ${version}/" \
+        | sed "s/^Release:.*/Release:        ${release}/" \
+        | sed "s/^Source:.*/Source:         ${packagename}_${version}-${release}.tar.gz/" \
+        | sed -ne '1,/%changelog/p' \
+        > rpm/${packagename}.spec
 rm /tmp/${packagename}.spec
 cp rpm/${packagename}.spec $destdir/
 
 test -e $tmpdir && rm -rf $tmpdir
 mkdir $tmpdir
-cp -r .* ${tmpdir}/
+cp -r . ${tmpdir}/
 find ${tmpdir} -iname "*.pyc"   -exec rm "{}" \;
 find ${tmpdir} -iname "*.marks" -exec rm "{}" \;
 find ${tmpdir} -iname "*~"      -exec rm "{}" \;
@@ -36,8 +36,6 @@ find ${tmpdir} -iname "*.svn"   -exec rm -rf "{}" \; 2>/dev/null
 
 cd ${tmpdir}/
 dpkg-buildpackage -S
-cd -
-cp configure ${tmpdir}/
 mv ${tmpdir}/../${packagename}_${version}-${release}.tar.gz $destdir/
 mv ${tmpdir}/../${packagename}_${version}-${release}.dsc    $destdir/
 #rm -rf $tmpdir
