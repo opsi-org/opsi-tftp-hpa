@@ -1,9 +1,10 @@
-tftp-hpa (5.2+20170109-1) UNRELEASED; urgency=medium
+tftp-hpa (5.2.8-3) UNRELEASED; urgency=medium
 
   * tftpd.c/h: added patch for named pipes
   * spec: correct version
   * spec: corrected source file
   * spec: tcpd-devel replaces tcp_wrappers-devel
+  * added configure
 
  -- Mathias Radtke <m.radtke@uib.de>  Thu, 05 Jan 2017 16:52:47 +0100
 
