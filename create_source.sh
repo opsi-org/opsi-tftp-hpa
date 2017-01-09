@@ -28,7 +28,7 @@ cp rpm/${packagename}.spec $destdir/
 
 test -e $tmpdir && rm -rf $tmpdir
 mkdir $tmpdir
-cp -r ./* ${tmpdir}/
+cp -r .* ${tmpdir}/
 find ${tmpdir} -iname "*.pyc"   -exec rm "{}" \;
 find ${tmpdir} -iname "*.marks" -exec rm "{}" \;
 find ${tmpdir} -iname "*~"      -exec rm "{}" \;
