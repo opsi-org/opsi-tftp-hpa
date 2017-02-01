@@ -1,10 +1,11 @@
-tftp-hpa (5.2-7) UNRELEASED; urgency=medium
+tftp-hpa (5.2-8) UNRELEASED; urgency=medium
 
   * tftpd.c/h: added patch for named pipes
   * spec: correct version
   * spec: corrected source file
+  * spec/rules: correct handling of tftpboot directory
 
- -- Mathias Radtke <m.radtke@uib.de>  Thu, 05 Jan 2017 16:52:47 +0100
+ -- Mathias Radtke <m.radtke@uib.de>  Wed, 1 Feb 2017 12:03:55 +0100
 
 tftp-hpa (5.2+20150808-1ubuntu1) xenial; urgency=medium
 

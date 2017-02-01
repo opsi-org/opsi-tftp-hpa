@@ -5,6 +5,7 @@ set -e
 . /usr/share/debconf/confmodule
 
 CONFFILE="/etc/default/tftpd-hpa"
+BASEDIR=/tftpboot
 
 case "${1}" in
 	configure)
@@ -29,7 +30,7 @@ cat > "${CONFFILE}" << EOF
 # /etc/default/tftpd-hpa
 
 TFTP_USERNAME="${TFTP_USERNAME}"
-TFTP_DIRECTORY="${TFTP_DIRECTORY}"
+TFTP_DIRECTORY="${BASEDIR}"
 TFTP_ADDRESS="${TFTP_ADDRESS}"
 TFTP_OPTIONS="${TFTP_OPTIONS} -s"
 EOF
