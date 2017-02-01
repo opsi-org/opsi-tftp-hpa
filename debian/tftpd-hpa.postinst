@@ -13,7 +13,7 @@ case "${1}" in
 		TFTP_USERNAME="${RET:-tftp}"
 
 		db_get tftpd-hpa/directory
-		TFTP_DIRECTORY="${RET:-/srv/tftp}"
+		TFTP_DIRECTORY="${BASEDIR}"
 
 		db_get tftpd-hpa/address
 		TFTP_ADDRESS="${RET:-[::]:69}"
