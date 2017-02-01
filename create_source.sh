@@ -18,11 +18,11 @@ rm ${destdir}/${packagename}*.spec    2>/dev/null || true
 
 cp rpm/${packagename}.spec /tmp/
 cat /tmp/${packagename}.spec \
-	| sed "s/^Version:.*/Version:        ${version}/" \
-	| sed "s/^Release:.*/Release:        ${release}/" \
-	| sed "s/^Source:.*/Source:         ${packagename}_${version}-${release}.tar.gz/" \
-	| sed -ne '1,/%changelog/p' \
-	> rpm/${packagename}.spec
+        | sed "s/^Version:.*/Version:        ${version}/" \
+        | sed "s/^Release:.*/Release:        ${release}/" \
+        | sed "s/^Source:.*/Source:         ${packagename}_${version}-${release}.tar.gz/" \
+        | sed -ne '1,/%changelog/p' \
+        > rpm/${packagename}.spec
 rm /tmp/${packagename}.spec
 cp rpm/${packagename}.spec $destdir/
 
@@ -38,7 +38,7 @@ cd ${tmpdir}/
 dpkg-buildpackage -S
 mv ${tmpdir}/../${packagename}_${version}-${release}.tar.gz $destdir/
 mv ${tmpdir}/../${packagename}_${version}-${release}.dsc    $destdir/
-rm -rf $tmpdir
+#rm -rf $tmpdir
 echo "============================================================================================="
 echo "source archive: ${destdir}/${packagename}_${version}-${release}.tar.gz"
 echo "dsc file:       ${destdir}/${packagename}_${version}-${release}.dsc"

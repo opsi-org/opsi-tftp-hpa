@@ -1,14 +1,20 @@
 Summary: The client for the Trivial File Transfer Protocol (TFTP).
-Name: tftp
-Version:        5.2
-Release:        8
+Name: tftp-hpa
+Version:        5.2.8
+Release:        6
 License: BSD
 Group: Applications/Internet
 #Source0: http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.gz
-Source:         tftp-hpa_5.2-8.tar.gz
+Source:         tftp-hpa_5.2.8-6.tar.gz
+%if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
 BuildRequires: tcp_wrappers-devel
+%else
+BuildRequires: tcpd-devel
+%endif
 #BuildRoot: %{_tmppath}/%{name}-root
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+%define toplevel_dir %{name}-%{version}
 
 %description
 The Trivial File Transfer Protocol (TFTP) is normally used only for
@@ -36,7 +42,7 @@ enabled unless it is expressly needed.  The TFTP server is run from
 %endif
 
 %prep
-%setup -q -n tftp-hpa-%{version}-%{release} 
+%setup -q -n tftp-hpa-%{version}
 %build
 %configure
 make %{?_smp_mflags}
