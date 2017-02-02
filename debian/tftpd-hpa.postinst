@@ -6,6 +6,8 @@ set -e
 
 CONFFILE="/etc/default/tftpd-hpa"
 BASEDIR=/tftpboot
+ADDRESS=":69"
+
 
 case "${1}" in
 	configure)
@@ -16,7 +18,7 @@ case "${1}" in
 		TFTP_DIRECTORY="${BASEDIR}"
 
 		db_get tftpd-hpa/address
-		TFTP_ADDRESS="${RET:-[::]:69}"
+		TFTP_ADDRESS="${ADDRESS}"
 
 		db_get tftpd-hpa/options
 		TFTP_OPTIONS="${RET}" # is ok when empty
@@ -32,7 +34,7 @@ cat > "${CONFFILE}" << EOF
 TFTP_USERNAME="${TFTP_USERNAME}"
 TFTP_DIRECTORY="${BASEDIR}"
 TFTP_ADDRESS="${TFTP_ADDRESS}"
-TFTP_OPTIONS="${TFTP_OPTIONS} -s"
+TFTP_OPTIONS="${TFTP_OPTIONS} --secure -c"
 EOF
 		fi
 

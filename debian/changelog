@@ -1,4 +1,4 @@
-tftp-hpa (5.2.8-8) UNRELEASED; urgency=medium
+tftp-hpa (5.2.8-10) UNRELEASED; urgency=medium
 
   * tftpd.c/h: added patch for named pipes
   * spec: correct version
@@ -6,6 +6,7 @@ tftp-hpa (5.2.8-8) UNRELEASED; urgency=medium
   * spec/rules: correct handling of tftpboot directory
   * spec: tcpd-devel replaces tcp_wrappers-devel
   * added configure
+  * using ipv4
 
  -- Mathias Radtke <m.radtke@uib.de>  Wed, 1 Feb 2017 12:03:55 +0100
 
