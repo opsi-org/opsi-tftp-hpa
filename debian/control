@@ -1,4 +1,4 @@
-Source: tftp-hpa
+Source: opsi-tftp-hpa
 Section: net
 Priority: extra
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
@@ -9,7 +9,7 @@ Homepage: http://git.kernel.org/cgit/network/tftp/tftp-hpa.git
 Vcs-Browser: http://git.debian.org/?p=users/ron/tftp-hpa.git
 Vcs-Git: git://git.debian.org/users/ron/tftp-hpa.git
 
-Package: tftp-hpa
+Package: opsi-tftp-hpa
 Architecture: linux-any kfreebsd-any
 Depends: ${shlibs:Depends}
 Conflicts: tftp
@@ -22,11 +22,11 @@ Description: HPA's tftp client
  .
  This package contains the client.
 
-Package: tftp-hpa-dbg
+Package: opsi-tftp-hpa-dbg
 Section: debug
 Priority: extra
 Architecture: linux-any kfreebsd-any
-Depends: tftp-hpa (= ${binary:Version}), tftpd-hpa (= ${binary:Version})
+Depends: opsi-tftp-hpa (= ${binary:Version}), opsi-tftpd-hpa (= ${binary:Version})
 Description: HPA's tftp (debug)
  Trivial File Transfer Protocol (TFTP) is a file transfer protocol, mainly to
  serve boot images over the network to other machines (PXE).
@@ -36,12 +36,12 @@ Description: HPA's tftp (debug)
  .
  This package contains the debugging symbols for both the client and the server.
 
-Package: tftpd-hpa
+Package: opsi-tftpd-hpa
 Architecture: linux-any kfreebsd-any
 Depends: ${shlibs:Depends}, adduser, ${misc:Depends}
 Conflicts: tftp-server, tftpd, atftpd
 Replaces: tftp-server, tftpd, atftpd
-Provides: tftp-server
+Provides: opsi-tftp-server
 Suggests: pxelinux
 Description: HPA's tftp server
  Trivial File Transfer Protocol (TFTP) is a file transfer protocol, mainly to

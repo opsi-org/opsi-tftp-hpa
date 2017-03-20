@@ -9,6 +9,10 @@ packagename=$(basename rpm/*.spec .spec)
 version=$(head -n1 debian/changelog | cut -d'(' -f2 | cut -d')' -f1 | cut -d'-' -f1)
 release=$(head -n1 debian/changelog | cut -d'(' -f2 | cut -d')' -f1 | cut -d'-' -f2)
 tmpdir=/tmp/${packagename}-${version}
+echo $packagename
+echo $version
+echo $release
+echo $tmpdir
 
 
 cd $dir
