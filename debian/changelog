@@ -1,3 +1,9 @@
+opsi-tftp-hpa (5.2.8-16) UNRELEASED; urgency=medium
+
+  * added obsoletes and conflicts
+
+ -- Mathias Radtke <m.radtke@uib.de>  Tue, 21 Mar 2017 09:45:30 +0100
+
 opsi-tftp-hpa (5.2.8-15) UNRELEASED; urgency=medium
 
   * tftpd.c/h: added patch for named pipes
@@ -7,8 +13,9 @@ opsi-tftp-hpa (5.2.8-15) UNRELEASED; urgency=medium
   * spec: tcpd-devel replaces tcp_wrappers-devel
   * added configure
   * using ipv4
+  * 
 
- -- Mathias Radtke <m.radtke@uib.de>  Wed, 1 Feb 2017 12:03:55 +0100
+ -- Mathias Radtke <m.radtke@uib.de>  Mon, 20 Mar 2017 09:45:30 +0100
 
 tftp-hpa (5.2+20150808-1ubuntu1) xenial; urgency=medium
 
