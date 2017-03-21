@@ -39,8 +39,8 @@ Description: HPA's tftp (debug)
 Package: opsi-tftpd-hpa
 Architecture: linux-any kfreebsd-any
 Depends: ${shlibs:Depends}, adduser, ${misc:Depends}
-Conflicts: tftp-server, tftpd, atftpd
-Replaces: tftp-server, tftpd, atftpd
+Conflicts: tftp-server, tftpd, atftpd, opsi-atftpd
+Replaces: tftp-server, tftpd, atftpd, opsi-atftpd
 Provides: opsi-tftp-server
 Suggests: pxelinux
 Description: HPA's tftp server
