@@ -1,0 +1,40 @@
+Template: tftpd-hpa/username
+Type: string
+Default: tftp
+_Description: Dedicated system account for the tftpd-hpa TFTP daemon:
+ The TFTP server must use a dedicated account for its operation so that
+ the system's security is not compromised by running it with superuser
+ privileges.
+ .
+ Please choose that account's username.
+
+Template: tftpd-hpa/directory
+Type: string
+Default: /var/lib/tftpboot
+_Description: TFTP root directory:
+ Please specify the directory that will be used as root for the
+ TFTP server.
+
+Template: tftpd-hpa/address
+Type: string
+Default: [::]:69
+_Description: TFTP server address and port:
+ Please specify an address and port to listen to in the form of
+ [address][:port].
+ .
+ By default, the TFTP server listens to port 69 on all addresses and all
+ interfaces ([::]:69). If no port is specified, it defaults to 69.
+ .
+ Please note that numeric IPv6 addresses must be enclosed in square brackets
+ to avoid ambiguity with the optional port information.
+
+Template: tftpd-hpa/options
+Type: string
+Default: --secure
+_Description: TFTP server additional options:
+ Additional options can be passed to the TFTP server with this mechanism,
+ please consult the tftpd(8) manpage for more information about available
+ options.
+ .
+ Options other than the recommended '--secure' are rarely needed and only
+ for special situations. If unsure, leave it at the recommended default value.

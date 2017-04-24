@@ -1,8 +1,14 @@
+opsi-tftp-hpa (5.2.8-17) UNRELEASED; urgency=medium
+
+  * renamed all rependencies from tftpd-hpa to opsi-tftpd-hpa
+
+ -- Mathias Radtke <m.radtke@uib.de>  Tue, 28 Mar 2017 10:52:05 +0200
+
 opsi-tftp-hpa (5.2.8-16) UNRELEASED; urgency=medium
 
   * added obsoletes and conflicts
 
- -- Mathias Radtke <m.radtke@uib.de>  Tue, 21 Mar 2017 09:45:30 +0100
+ -- Mathias Radtke <m.radtke@uib.de>  Tue, 21 Mar 2017 10:51:15 +0200
 
 opsi-tftp-hpa (5.2.8-15) UNRELEASED; urgency=medium
 

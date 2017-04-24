@@ -20,14 +20,14 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../tftpd-hpa.templates:1001
+#: ../opsi-tftpd-hpa.templates:1001
 msgid "Dedicated system account for the tftpd-hpa TFTP daemon:"
 msgstr ""
 "Специально выделенная системная учётная запись для TFTP службы tftpd-hpa:"
 
 #. Type: string
 #. Description
-#: ../tftpd-hpa.templates:1001
+#: ../opsi-tftpd-hpa.templates:1001
 msgid ""
 "The TFTP server must use a dedicated account for its operation so that the "
 "system's security is not compromised by running it with superuser privileges."
@@ -38,19 +38,19 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../tftpd-hpa.templates:1001
+#: ../opsi-tftpd-hpa.templates:1001
 msgid "Please choose that account's username."
 msgstr "Укажите имя такой учётной записи."
 
 #. Type: string
 #. Description
-#: ../tftpd-hpa.templates:2001
+#: ../opsi-tftpd-hpa.templates:2001
 msgid "TFTP root directory:"
 msgstr "Корневой каталог TFTP:"
 
 #. Type: string
 #. Description
-#: ../tftpd-hpa.templates:2001
+#: ../opsi-tftpd-hpa.templates:2001
 msgid ""
 "Please specify the directory that will be used as root for the TFTP server."
 msgstr ""
@@ -59,13 +59,13 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../tftpd-hpa.templates:3001
+#: ../opsi-tftpd-hpa.templates:3001
 msgid "TFTP server address and port:"
 msgstr "Адрес и порт сервера TFTP:"
 
 #. Type: string
 #. Description
-#: ../tftpd-hpa.templates:3001
+#: ../opsi-tftpd-hpa.templates:3001
 msgid ""
 "Please specify an address and port to listen to in the form of [address][:"
 "port]."
@@ -73,7 +73,7 @@ msgstr "Укажите прослушиваемый адрес и порт в в
 
 #. Type: string
 #. Description
-#: ../tftpd-hpa.templates:3001
+#: ../opsi-tftpd-hpa.templates:3001
 msgid ""
 "By default, the TFTP server listens to port 69 on all addresses and all "
 "interfaces ([::]:69). If no port is specified, it defaults to 69."
@@ -83,7 +83,7 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../tftpd-hpa.templates:3001
+#: ../opsi-tftpd-hpa.templates:3001
 msgid ""
 "Please note that numeric IPv6 addresses must be enclosed in square brackets "
 "to avoid ambiguity with the optional port information."
@@ -93,13 +93,13 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../tftpd-hpa.templates:4001
+#: ../opsi-tftpd-hpa.templates:4001
 msgid "TFTP server additional options:"
 msgstr "Дополнительные параметры сервера TFTP:"
 
 #. Type: string
 #. Description
-#: ../tftpd-hpa.templates:4001
+#: ../opsi-tftpd-hpa.templates:4001
 msgid ""
 "Additional options can be passed to the TFTP server with this mechanism, "
 "please consult the tftpd(8) manpage for more information about available "
@@ -110,7 +110,7 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../tftpd-hpa.templates:4001
+#: ../opsi-tftpd-hpa.templates:4001
 msgid ""
 "Options other than the recommended '--secure' are rarely needed and only for "
 "special situations. If unsure, leave it at the recommended default value."
