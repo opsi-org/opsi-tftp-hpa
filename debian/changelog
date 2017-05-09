@@ -1,4 +1,10 @@
-opsi-tftp-hpa (5.2.8-17) UNRELEASED; urgency=medium
+opsi-tftp-hpa (5.2.8-18) experimental; urgency=medium
+
+  * debian/contro: provides: opsi-tftpd
+
+ -- Mathias Radtke <m.radtke@uib.de>  Tue, 09 May 2017 14:29:13 +0200
+
+opsi-tftp-hpa (5.2.8-17) experimental; urgency=medium
 
   * renamed all rependencies from tftpd-hpa to opsi-tftpd-hpa
 
