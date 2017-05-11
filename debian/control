@@ -39,9 +39,9 @@ Description: HPA's tftp (debug)
 Package: opsi-tftpd-hpa
 Architecture: linux-any kfreebsd-any
 Depends: ${shlibs:Depends}, adduser, ${misc:Depends}
-Conflicts: tftp-server, tftpd, atftpd, opsi-atftpd
-Replaces: tftp-server, tftpd, atftpd, opsi-atftpd
 Provides: opsi-tftpd
+Conflicts: tftp-server, tftpd, atftpd, opsi-atftpd, opsi-tftpd
+Replaces: tftp-server, tftpd, atftpd, opsi-atftpd, opsi-tftpd
 Suggests: pxelinux
 Description: HPA's tftp server
  Trivial File Transfer Protocol (TFTP) is a file transfer protocol, mainly to
