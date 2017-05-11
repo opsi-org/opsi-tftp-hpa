@@ -1,11 +1,11 @@
 Summary: The client for the Trivial File Transfer Protocol (TFTP).
 Name: opsi-tftp-hpa
 Version:        5.2.8
-Release:        18
+Release:        19
 License: BSD
 Group: Applications/Internet
 #Source0: http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.gz
-Source:         opsi-tftp-hpa_5.2.8-18.tar.gz
+Source:         opsi-tftp-hpa_5.2.8-19.tar.gz
 %if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
 BuildRequires: tcp_wrappers-devel
 %else
@@ -26,8 +26,9 @@ and should not be enabled unless it is expressly needed.
 Group: System Environment/Daemons
 Summary: The server for the Trivial File Transfer Protocol (TFTP).
 Requires: xinetd
-Obsoletes: opsi-atftpd
-Conflicts: opsi-atftpd
+Provides: opsi-tftpd
+Obsoletes: opsi-atftpd, opsi-tftpd
+Conflicts: opsi-atftpd, opsi-tftpd
 %description server
 The Trivial File Transfer Protocol (TFTP) is normally used only for
 booting diskless workstations.  The tftp-server package provides the
