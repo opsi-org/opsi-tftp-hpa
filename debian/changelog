@@ -1,3 +1,21 @@
+opsi-tftp-hpa (5.2.8-23) experimental; urgency=medium
+
+  * spec: obsoletes: opsi-atftp
+
+ -- Mathias Radtke <m.radtke@uib.de>  Thu, 11 May 2017 14:27:12 +0200
+
+opsi-tftp-hpa (5.2.8-22) experimental; urgency=medium
+
+  * spec: removed obsoleted:opsi-tftpd
+ 
+ -- Mathias Radtke <m.radtke@uib.de>  Thu, 11 May 2017 14:26:53 +0200
+
+opsi-tftp-hpa (5.2.8-21) experimental; urgency=medium
+
+  * spec: removed conflicts: opsi-tftpd
+
+ -- Mathias Radtke <m.radtke@uib.de>  Thu, 11 May 2017 13:45:40 +0200
+
 opsi-tftp-hpa (5.2.8-20) experimental; urgency=medium
 
   * debian/control: suggests opsi-linux-bootimage
