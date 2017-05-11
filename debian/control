@@ -42,7 +42,7 @@ Depends: ${shlibs:Depends}, adduser, ${misc:Depends}
 Provides: opsi-tftpd
 Conflicts: tftp-server, tftpd, atftpd, opsi-atftpd, opsi-tftpd
 Replaces: tftp-server, tftpd, atftpd, opsi-atftpd, opsi-tftpd
-Suggests: pxelinux
+Suggests: opsi-linux-bootimage
 Description: HPA's tftp server
  Trivial File Transfer Protocol (TFTP) is a file transfer protocol, mainly to
  serve boot images over the network to other machines (PXE).
