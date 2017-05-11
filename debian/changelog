@@ -1,3 +1,9 @@
+opsi-tftp-hpa (5.2.8-19) experimental; urgency=medium
+
+  * control/spec: remove opsi-atftpd
+
+ -- Mathias Radtke <m.radtke@uib.de>  Thu, 11 May 2017 08:10:46 +0200
+
 opsi-tftp-hpa (5.2.8-18) experimental; urgency=medium
 
   * debian/contro: provides: opsi-tftpd
