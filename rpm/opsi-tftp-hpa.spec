@@ -26,8 +26,9 @@ and should not be enabled unless it is expressly needed.
 Group: System Environment/Daemons
 Summary: The server for the Trivial File Transfer Protocol (TFTP).
 Requires: xinetd
-Obsoletes: opsi-atftpd
-Conflicts: opsi-atftpd
+Provides: opsi-tftpd
+Obsoletes: opsi-atftpd, opsi-tftpd
+Conflicts: opsi-atftpd, opsi-tftpd
 %description server
 The Trivial File Transfer Protocol (TFTP) is normally used only for
 booting diskless workstations.  The tftp-server package provides the
