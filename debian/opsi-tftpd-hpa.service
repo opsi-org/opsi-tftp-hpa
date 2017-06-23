@@ -1,0 +1,15 @@
+[Unit]
+Description=Opsi TFTPD HPA Configuration Service
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/in.tftpd -v --listen --address :69 --secure $TFTPROOT
+Restart=on-failure
+RestartSec=5
+KillMode=process
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target
+
