@@ -7,9 +7,9 @@ Group: Applications/Internet
 #Source0: http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.gz
 Source:         opsi-tftp-hpa_5.2.8-23.tar.gz
 %if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
-BuildRequires: tcp_wrappers-devel
+BuildRequires: tcp_wrappers-devel systemd
 %else
-BuildRequires: tcpd-devel
+BuildRequires: tcpd-devel systemd-rpm-macros
 %endif
 #BuildRoot: %{_tmppath}/%{name}-root
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -46,6 +46,11 @@ enabled unless it is expressly needed.  The TFTP server is run from
 
 %prep
 %setup -q -n opsi-tftp-hpa-%{version}
+%pre
+%if 0%{?suse_version}
+sed -i 's_/tftpboot_${tftpboot}_g' opsi-tftpd-hpa.service 
+%service_add_pre opsi-tftpd-hpa.service
+%endif
 %build
 %configure
 make %{?_smp_mflags}
@@ -57,29 +62,31 @@ mkdir -p ${RPM_BUILD_ROOT}%{_sbindir}
 make INSTALLROOT=${RPM_BUILD_ROOT} \
     SBINDIR=%{_sbindir} MANDIR=%{_mandir} \
 	install
-install -m755 -d ${RPM_BUILD_ROOT}%{_sysconfdir}/xinetd.d/ ${RPM_BUILD_ROOT}/tftpboot
+#install -m755 -d ${RPM_BUILD_ROOT}%{_sysconfdir}/xinetd.d/ ${RPM_BUILD_ROOT}/tftpboot
 #install -m644 tftp-xinetd ${RPM_BUILD_ROOT}%{_sysconfdir}/xinetd.d/tftp
-cat <<EOF >$RPM_BUILD_ROOT/%{_sysconfdir}/xinetd.d/tftp
-service tftp
-{
-    disable         = no
-    socket_type     = dgram
-    protocol        = udp
-    wait            = yes
-    user            = root
-    server          = %{_sbindir}/in.tftpd
-    server_args     = -s %{tftpboot} -v -v
-    per_source      = 11
-    cps             = 100 2
-    flags           = IPv4
-}
-EOF
+#cat <<EOF >$RPM_BUILD_ROOT/%{_sysconfdir}/xinetd.d/tftp
+#service tftp
+#{
+#    disable         = no
+#    socket_type     = dgram
+#    protocol        = udp
+#    wait            = yes
+#    user            = root
+#    server          = %{_sbindir}/in.tftpd
+#    server_args     = -s %{tftpboot} -v -v
+#    per_source      = 11
+#    cps             = 100 2
+#    flags           = IPv4
+#}
+#EOF
 
 %post server
-/sbin/service xinetd reload > /dev/null 2>&1 || :
+#/sbin/service xinetd reload > /dev/null 2>&1 || :
+service opsi-tftpd-hpa start > /dev/null 2>&1 || :
 %postun server
 if [ $1 = 0 ]; then
-    /sbin/service xinetd reload > /dev/null 2>&1 || :
+    #/sbin/service xinetd reload > /dev/null 2>&1 || :
+    service opsi-tftpd-hpa restart > /dev/null 2>&1 || :
 fi
 %clean
 rm -rf ${RPM_BUILD_ROOT}
@@ -89,7 +96,7 @@ rm -rf ${RPM_BUILD_ROOT}
 %{_mandir}/man1/*
 %files server
 %defattr(-,root,root)
-%config(noreplace) %{_sysconfdir}/xinetd.d/tftp
+#%config(noreplace) %{_sysconfdir}/xinetd.d/tftp
 %dir /tftpboot
 %{_sbindir}/in.tftpd
 %{_mandir}/man8/*
