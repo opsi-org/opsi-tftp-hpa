@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/sbin/in.tftpd -v --listen --address :69 --secure $TFTPROOT
+ExecStart=/usr/sbin/in.tftpd -v --listen --address :69 --secure /tftpboot/
 Restart=on-failure
 RestartSec=5
 KillMode=process
