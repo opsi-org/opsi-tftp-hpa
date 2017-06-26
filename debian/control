@@ -3,17 +3,6 @@ Section: net
 Priority: extra
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Ron Lee <ron@debian.org>
-Build-Depends: debhelper (>= 9), autoconf, autotools-dev, libwrap0-dev, po-debconf
-Standards-Version: 3.9.6.1
-Homepage: http://git.kernel.org/cgit/network/tftp/tftp-hpa.git
-Vcs-Browser: http://git.debian.org/?p=users/ron/tftp-hpa.git
-Vcs-Git: git://git.debian.org/users/ron/tftp-hpa.git
-
-Source: opsi-tftpd-hpa
-Section: net
-Priority: extra
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-XSBC-Original-Maintainer: Ron Lee <ron@debian.org>
 Build-Depends: debhelper (>= 9), autoconf, autotools-dev, libwrap0-dev, po-debconf, dh-systemd (>= 1.5)
 Standards-Version: 3.9.6.1
 Homepage: http://git.kernel.org/cgit/network/tftp/tftp-hpa.git
@@ -49,7 +38,6 @@ Description: HPA's tftp (debug)
 
 Package: opsi-tftpd-hpa
 Architecture: linux-any kfreebsd-any
-
 Depends: ${shlibs:Depends}, adduser, ${misc:Depends}, systemd
 Provides: opsi-tftpd
 Conflicts: tftp-server, tftpd, atftpd, opsi-atftpd, opsi-tftpd

@@ -1,3 +1,9 @@
+opsi-tftp-hpa (5.2.8-24) experimental; urgency=medium
+
+  * using systemd as default
+
+ -- Mathias Radtke <m.radtke@uib.de>  Fri, 23 Jun 2017 16:17:00 +0200
+
 opsi-tftp-hpa (5.2.8-23) experimental; urgency=medium
 
   * spec: obsoletes: opsi-atftp
