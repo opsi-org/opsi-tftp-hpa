@@ -42,6 +42,7 @@ case "${1}" in
 				echo "tftpd-hpa directory (${_DIRECTORY}) already exists, doing nothing."
 			fi
 		done
+		systemctlt start opsi-tftpd-hpa
 		;;
 
 	abort-upgrade|abort-remove|abort-deconfigure)

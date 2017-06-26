@@ -1,8 +1,14 @@
-opsi-tftp-hpa (5.2.8-30) UNRELEASED; urgency=medium
+opsi-tftp-hpa (5.2.8-31) experimental; urgency=medium
+
+  * more changes to support rpm 
+
+ -- Mathias Radtke <m.radtke@uib.de>  Mon, 26 Jun 2017 15:53:11 +0200
+
+opsi-tftp-hpa (5.2.8-30) experimental; urgency=medium
 
   * fixed typo
-
- -- Mathias Radtke <m.radtke@uib.de>  Mon, 26 Jun 2017 15:43:20 +0200
+ 
+ -- Mathias Radtke <m.radtke@uib.de>  Mon, 26 Jun 2017 15:52:51 +0200
 
 opsi-tftp-hpa (5.2.8-29) experimental; urgency=medium
 
