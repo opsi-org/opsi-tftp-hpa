@@ -1,11 +1,11 @@
 Summary: The client for the Trivial File Transfer Protocol (TFTP).
 Name: opsi-tftp-hpa
 Version:        5.2.8
-Release:        26
+Release:        30
 License: BSD
 Group: Applications/Internet
 #Source0: http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.gz
-Source:         opsi-tftp-hpa_5.2.8-26.tar.gz
+Source:         opsi-tftp-hpa_5.2.8-30.tar.gz
 %if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
 BuildRequires: tcp_wrappers-devel systemd
 %else
@@ -47,14 +47,16 @@ enabled unless it is expressly needed.  The TFTP server is run from
 %prep
 %setup -q -n opsi-tftp-hpa-%{version}
 %pre
-%if 0%{?suse_version}
-sed -i 's_/tftpboot_${tftpboot}_g' opsi-tftpd-hpa.service 
 %service_add_pre opsi-tftpd-hpa.service
-%endif
 %build
 %configure
 make %{?_smp_mflags}
 %install
+%if 0%{?suse_version}
+  #Adjusting tftpboot directory
+  sed --in-place "s_/tftpboot_${tftpboot}_" "debian/opsi-tftpd-hpa.service" || true
+%endif
+install -D -m 644 debian/opsi-tftpd-hpa.service %{buildroot}%{_unitdir}/opsi-tftpd-hpa.service
 rm -rf ${RPM_BUILD_ROOT}
 mkdir -p ${RPM_BUILD_ROOT}%{_bindir}
 mkdir -p ${RPM_BUILD_ROOT}%{_mandir}/man{1,8}
@@ -82,17 +84,37 @@ install -m755 -d ${RPM_BUILD_ROOT}%{_sysconfdir}/xinetd.d/ ${RPM_BUILD_ROOT}/tft
 #EOF
 
 %post server
-#/sbin/service xinetd reload > /dev/null 2>&1 || :
-service opsi-tftpd-hpa start > /dev/null 2>&1 || :
-%postun server
-if [ $1 = 0 ]; then
-    #/sbin/service xinetd reload > /dev/null 2>&1 || :
-    service opsi-tftpd-hpa restart > /dev/null 2>&1 || :
+%if 0%{?rhel_version} || 0%{?centos_version}
+%systemd_post opsi-tftpd-hpa.service
+%else
+%service_add_post opsi-tftpd-hpa.service
+%endif
+
+systemctl=`which systemctl 2>/dev/null` || true
+if [ ! -z "$systemctl" -a -x "$systemctl" ]; then
+    $systemctl enable opsi-tftpd-hpa.service && echo "Enabled opsi-tftpd-hpa.service" || echo "Enabling opsi-tftpd-hpa.service failed!"
+
+    if [ $arg0 -eq 1 ]; then
+        # Install
+        $systemctl start opsi-tftpd-hpa.service || true
+    else
+        # Upgrade
+        $systemctl restart opsi-tftpd-hpa.service || true
+    fi
 fi
+
+%postun server
+%if 0%{?rhel_version} || 0%{?centos_version}
+%systemd_postun opsi-tftpd-hpa.service
+%else
+%service_del_postun opsi-tftpd-hpa.service
+%endif
+
 %clean
 rm -rf ${RPM_BUILD_ROOT}
 %files
 %defattr(-,root,root)
+%{_unitdir}/opsi-tftpd-hpa.service
 %{_bindir}/tftp
 %{_mandir}/man1/*
 %files server

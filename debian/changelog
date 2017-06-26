@@ -1,8 +1,32 @@
-opsi-tftp-hpa (5.2.8-26) UNRELEASED; urgency=medium
+opsi-tftp-hpa (5.2.8-30) UNRELEASED; urgency=medium
+
+  * fixed typo
+
+ -- Mathias Radtke <m.radtke@uib.de>  Mon, 26 Jun 2017 15:43:20 +0200
+
+opsi-tftp-hpa (5.2.8-29) experimental; urgency=medium
+
+  * added missing %
+
+ -- Mathias Radtke <m.radtke@uib.de>  Mon, 26 Jun 2017 15:27:35 +0200
+
+opsi-tftp-hpa (5.2.8-28) experimental; urgency=medium
+
+  * spec: corrected unit file related code
+
+ -- Mathias Radtke <m.radtke@uib.de>  Mon, 26 Jun 2017 13:51:28 +0200
+
+opsi-tftp-hpa (5.2.8-27) experimental; urgency=medium
+
+  * spec file changes related to tftpboot directory
+
+ -- Mathias Radtke <m.radtke@uib.de>  Mon, 26 Jun 2017 13:25:37 +0200
+
+opsi-tftp-hpa (5.2.8-26ubuntu1) experimental; urgency=medium
 
   * tftpboot directory changed
 
- -- Mathias Radtke <m.radtke@uib.de>  Mon, 26 Jun 2017 13:19:33 +0200
+ -- Mathias Radtke <m.radtke@uib.de>  Mon, 26 Jun 2017 13:25:15 +0200
 
 opsi-tftp-hpa (5.2.8-25) experimental; urgency=medium
 
