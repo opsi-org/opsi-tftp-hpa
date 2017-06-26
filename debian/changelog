@@ -1,3 +1,15 @@
+opsi-tftp-hpa (5.2.8-26) UNRELEASED; urgency=medium
+
+  * tftpboot directory changed
+
+ -- Mathias Radtke <m.radtke@uib.de>  Mon, 26 Jun 2017 13:19:33 +0200
+
+opsi-tftp-hpa (5.2.8-25) experimental; urgency=medium
+
+  * spec: mkdir of tftpboot directory
+
+ -- Mathias Radtke <m.radtke@uib.de>  Mon, 26 Jun 2017 12:16:43 +0200
+
 opsi-tftp-hpa (5.2.8-24) experimental; urgency=medium
 
   * using systemd as default
