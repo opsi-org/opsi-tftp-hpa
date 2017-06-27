@@ -1,3 +1,10 @@
+opsi-tftp-hpa (5.2.8-32) experimental; urgency=medium
+
+  * debian/postinst: fixed typo
+  * rpm/opsi-tftpd-hpa.spec: 
+
+ -- Mathias Radtke <m.radtke@uib.de>  Tue, 27 Jun 2017 10:33:43 +0200
+
 opsi-tftp-hpa (5.2.8-31) experimental; urgency=medium
 
   * more changes to support rpm 
