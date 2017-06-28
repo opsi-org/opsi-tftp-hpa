@@ -86,6 +86,7 @@ install -m755 -d ${RPM_BUILD_ROOT}%{_sysconfdir}/xinetd.d/ ${RPM_BUILD_ROOT}/tft
 %post server
 %if 0%{?rhel_version} || 0%{?centos_version}
 %systemd_post opsi-tftpd-hpa.service
+%service_add_post opsi-tftpd-hpa.service
 %else
 %service_add_post opsi-tftpd-hpa.service
 %endif
@@ -106,6 +107,7 @@ fi
 %preun server
 %if 0%{?rhel_version} || 0%{?centos_version}
 %systemd_preun opsi-tftpd-hpa.service
+%service_del_preun opsi-tftpd-hpa.service
 %else
 %service_del_preun opsi-tftpd-hpa.service
 %endif
@@ -114,6 +116,7 @@ fi
 %postun server
 %if 0%{?rhel_version} || 0%{?centos_version}
 %systemd_postun opsi-tftpd-hpa.service
+%service_del_postun opsi-tftpd-hpa.service
 %else
 %service_del_postun opsi-tftpd-hpa.service
 %endif
