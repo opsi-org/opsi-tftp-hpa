@@ -1,11 +1,11 @@
 Summary: The client for the Trivial File Transfer Protocol (TFTP).
 Name: opsi-tftp-hpa
 Version:        5.2.8
-Release:        33
+Release:        36
 License: BSD
 Group: Applications/Internet
 #Source0: http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.gz
-Source:         opsi-tftp-hpa_5.2.8-33.tar.gz
+Source:         opsi-tftp-hpa_5.2.8-36.tar.gz
 %if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
 BuildRequires: tcp_wrappers-devel systemd
 %else
@@ -51,12 +51,12 @@ enabled unless it is expressly needed.  The TFTP server is run from
 %build
 %configure
 make %{?_smp_mflags}
-%install
+%install 
 %if 0%{?suse_version}
   #Adjusting tftpboot directory
   sed --in-place "s_/tftpboot_${tftpboot}_" "debian/opsi-tftpd-hpa.service" || true
 %endif
-rm -rf ${RPM_BUILD_ROOT}
+#rm -rf ${RPM_BUILD_ROOT}
 install -D -m 644 debian/opsi-tftpd-hpa.service %{buildroot}%{_unitdir}/opsi-tftpd-hpa.service
 mkdir -p ${RPM_BUILD_ROOT}%{_bindir}
 mkdir -p ${RPM_BUILD_ROOT}%{_mandir}/man{1,8}
@@ -102,6 +102,14 @@ if [ ! -z "$systemctl" -a -x "$systemctl" ]; then
         $systemctl restart opsi-tftpd-hpa.service || true
     fi
 fi
+
+%preun server
+%if 0%{?rhel_version} || 0%{?centos_version}
+%systemd_preun opsi-tftpd-hpa.service
+%else
+%service_del_preun opsi-tftpd-hpa.service
+%endif
+
 
 %postun server
 %if 0%{?rhel_version} || 0%{?centos_version}
