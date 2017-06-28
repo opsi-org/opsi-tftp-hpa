@@ -1,11 +1,11 @@
 Summary: The client for the Trivial File Transfer Protocol (TFTP).
 Name: opsi-tftp-hpa
 Version:        5.2.8
-Release:        36
+Release:        37
 License: BSD
 Group: Applications/Internet
 #Source0: http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.gz
-Source:         opsi-tftp-hpa_5.2.8-36.tar.gz
+Source:         opsi-tftp-hpa_5.2.8-37.tar.gz
 %if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
 BuildRequires: tcp_wrappers-devel systemd
 %else
@@ -86,7 +86,6 @@ install -m755 -d ${RPM_BUILD_ROOT}%{_sysconfdir}/xinetd.d/ ${RPM_BUILD_ROOT}/tft
 %post server
 %if 0%{?rhel_version} || 0%{?centos_version}
 %systemd_post opsi-tftpd-hpa.service
-%service_add_post opsi-tftpd-hpa.service
 %else
 %service_add_post opsi-tftpd-hpa.service
 %endif
@@ -107,7 +106,6 @@ fi
 %preun server
 %if 0%{?rhel_version} || 0%{?centos_version}
 %systemd_preun opsi-tftpd-hpa.service
-%service_del_preun opsi-tftpd-hpa.service
 %else
 %service_del_preun opsi-tftpd-hpa.service
 %endif
@@ -116,7 +114,6 @@ fi
 %postun server
 %if 0%{?rhel_version} || 0%{?centos_version}
 %systemd_postun opsi-tftpd-hpa.service
-%service_del_postun opsi-tftpd-hpa.service
 %else
 %service_del_postun opsi-tftpd-hpa.service
 %endif
@@ -125,13 +122,16 @@ fi
 #rm -rf ${RPM_BUILD_ROOT}
 %files
 %defattr(-,root,root)
-%{_unitdir}/opsi-tftpd-hpa.service
+#%{_unitdir}/opsi-tftpd-hpa.service
 %{_bindir}/tftp
 %{_mandir}/man1/*
 %files server
 %defattr(-,root,root)
 #%config(noreplace) %{_sysconfdir}/xinetd.d/tftp
+%{_unitdir}/opsi-tftpd-hpa.service
 %dir /tftpboot
 %{_sbindir}/in.tftpd
 %{_mandir}/man8/*
 
+# ===[ changelog ]==================================
+%changelog

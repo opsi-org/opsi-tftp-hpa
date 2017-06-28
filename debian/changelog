@@ -1,3 +1,15 @@
+opsi-tftp-hpa (5.2.8-38) experimental; urgency=medium
+
+  * added unit file to %files server
+
+ -- Mathias Radtke <m.radtke@uib.de>  Wed, 28 Jun 2017 11:39:48 +0200
+
+opsi-tftp-hpa (5.2.8-37) experimental; urgency=medium
+
+  * spec:added macros for propert installation
+
+ -- Mathias Radtke <m.radtke@uib.de>  Wed, 28 Jun 2017 11:17:55 +0200
+
 opsi-tftp-hpa (5.2.8-36) experimental; urgency=medium
 
   * spec: server from install command
