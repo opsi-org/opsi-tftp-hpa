@@ -1,11 +1,11 @@
 Summary: The client for the Trivial File Transfer Protocol (TFTP).
 Name: opsi-tftp-hpa
 Version:        5.2.8
-Release:        32
+Release:        33
 License: BSD
 Group: Applications/Internet
 #Source0: http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.gz
-Source:         opsi-tftp-hpa_5.2.8-32.tar.gz
+Source:         opsi-tftp-hpa_5.2.8-33.tar.gz
 %if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
 BuildRequires: tcp_wrappers-devel systemd
 %else
@@ -110,8 +110,8 @@ fi
 %service_del_postun opsi-tftpd-hpa.service
 %endif
 
-%clean
-rm -rf ${RPM_BUILD_ROOT}
+#%clean
+#rm -rf ${RPM_BUILD_ROOT}
 %files
 %defattr(-,root,root)
 %{_unitdir}/opsi-tftpd-hpa.service

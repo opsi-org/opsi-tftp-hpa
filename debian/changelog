@@ -1,3 +1,16 @@
+opsi-tftp-hpa (5.2.8-34) experimental; urgency=medium
+
+  * spec: removed clean for debugging
+  * debian/postinst: corrected servcie start behaviour
+
+ -- Mathias Radtke <m.radtke@uib.de>  Wed, 28 Jun 2017 09:30:20 +0200
+
+opsi-tftp-hpa (5.2.8-33) experimental; urgency=medium
+
+  * debian/postinst: added debug message
+
+ -- Mathias Radtke <m.radtke@uib.de>  Tue, 27 Jun 2017 14:31:29 +0200
+
 opsi-tftp-hpa (5.2.8-32) experimental; urgency=medium
 
   * debian/postinst: fixed typo
