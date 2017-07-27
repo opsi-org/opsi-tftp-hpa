@@ -3,7 +3,7 @@ Section: net
 Priority: extra
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Ron Lee <ron@debian.org>
-Build-Depends: debhelper (>= 9), autoconf, autotools-dev, libwrap0-dev, po-debconf
+Build-Depends: debhelper (>= 9), autoconf, autotools-dev, libwrap0-dev, po-debconf, dh-systemd (>= 1.5)
 Standards-Version: 3.9.6.1
 Homepage: http://git.kernel.org/cgit/network/tftp/tftp-hpa.git
 Vcs-Browser: http://git.debian.org/?p=users/ron/tftp-hpa.git
@@ -38,11 +38,11 @@ Description: HPA's tftp (debug)
 
 Package: opsi-tftpd-hpa
 Architecture: linux-any kfreebsd-any
-Depends: ${shlibs:Depends}, adduser, ${misc:Depends}
-Conflicts: tftp-server, tftpd, atftpd, opsi-atftpd
-Replaces: tftp-server, tftpd, atftpd, opsi-atftpd
-Provides: opsi-tftp-server
-Suggests: pxelinux
+Depends: ${shlibs:Depends}, adduser, ${misc:Depends}, systemd
+Provides: opsi-tftpd
+Conflicts: tftp-server, tftpd, atftpd, opsi-atftpd, opsi-tftpd
+Replaces: tftp-server, tftpd, atftpd, opsi-atftpd, opsi-tftpd
+Suggests: opsi-linux-bootimage
 Description: HPA's tftp server
  Trivial File Transfer Protocol (TFTP) is a file transfer protocol, mainly to
  serve boot images over the network to other machines (PXE).
