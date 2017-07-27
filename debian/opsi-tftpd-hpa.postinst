@@ -1,0 +1,61 @@
+#!/bin/sh
+
+set -e
+
+. /usr/share/debconf/confmodule
+
+BASEDIR=/tftpboot
+ADDRESS=":69"
+
+
+case "${1}" in
+	configure)
+		db_get tftpd-hpa/username
+		TFTP_USERNAME="${RET:-tftp}"
+
+		db_get tftpd-hpa/directory
+		TFTP_DIRECTORY="${BASEDIR}"
+
+		db_get tftpd-hpa/address
+		TFTP_ADDRESS="${ADDRESS}"
+
+		db_get tftpd-hpa/options
+		TFTP_OPTIONS="${RET}" # is ok when empty
+
+		db_stop
+
+		if ! getent passwd "${TFTP_USERNAME}" > /dev/null 2>&1
+		then
+			adduser --system --home $(echo ${TFTP_DIRECTORY} | awk '{ print $1 }') --no-create-home --quiet --gecos 'tftp daemon' --group ${TFTP_USERNAME}
+		else
+			echo "tftpd user (${TFTP_USERNAME}) already exists, doing nothing."
+		fi
+
+		for _DIRECTORY in ${TFTP_DIRECTORY}
+		do
+			if [ ! -d "${_DIRECTORY}" ]
+			then
+				mkdir -p "${_DIRECTORY}"
+				chown root:nogroup ${_DIRECTORY} -R
+			else
+				echo
+				echo "tftpd-hpa directory (${_DIRECTORY}) already exists, doing nothing."
+			fi
+		done
+		systemctl enable opsi-tftpd-hpa || echo "failed to add service opsi-tftpd-hpa to boot, please set it manually via systemctl"
+		service opsi-tftpd-hpa start || echo "service opsi-tftpd-hpa did not start autmatically, please start it manually"
+		;;
+
+	abort-upgrade|abort-remove|abort-deconfigure)
+
+		;;
+
+	*)
+		echo "postinst called with unknown argument \`${1}'" >&2
+		exit 1
+		;;
+esac
+
+#DEBHELPER#
+
+exit 0

@@ -37,6 +37,7 @@ find ${tmpdir} -iname "*.pyc"   -exec rm "{}" \;
 find ${tmpdir} -iname "*.marks" -exec rm "{}" \;
 find ${tmpdir} -iname "*~"      -exec rm "{}" \;
 find ${tmpdir} -iname "*.svn"   -exec rm -rf "{}" \; 2>/dev/null
+find ${tmpdir} -iname ".git"      -exec rm -rf "{}" \;
 
 cd ${tmpdir}/
 dpkg-buildpackage -S
