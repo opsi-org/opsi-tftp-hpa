@@ -3,8 +3,11 @@
 set -e
 
 . /usr/share/debconf/confmodule
-
-BASEDIR=/tftpboot
+if (which ucr); then
+	BASEDIR=/var/lib/univention-client-boot
+else
+	BASEDIR=/tftpboot
+fi
 ADDRESS=":69"
 
 
@@ -42,6 +45,10 @@ case "${1}" in
 				echo "tftpd-hpa directory (${_DIRECTORY}) already exists, doing nothing."
 			fi
 		done
+		if (which ucr); then
+			sed --in-place "s_/tftpboot_/var/lib/univention-client-boot_g" /lib/systemd/system/opsi-tftpd-hpa.service
+#			sed --in-place "s_--secure__g" /lib/systemd/system/opsi-tftpd-hpa.service
+		fi
 		systemctl enable opsi-tftpd-hpa || echo "failed to add service opsi-tftpd-hpa to boot, please set it manually via systemctl"
 		service opsi-tftpd-hpa start || echo "service opsi-tftpd-hpa did not start autmatically, please start it manually"
 		;;

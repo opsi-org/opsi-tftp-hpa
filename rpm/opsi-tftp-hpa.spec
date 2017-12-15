@@ -1,11 +1,11 @@
 Summary: The client for the Trivial File Transfer Protocol (TFTP).
 Name: opsi-tftp-hpa
 Version:        5.2.8
-Release:        38
+Release:        45
 License: BSD
 Group: Applications/Internet
 #Source0: http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.gz
-Source:         opsi-tftp-hpa_5.2.8-38.tar.gz
+Source:         opsi-tftp-hpa_5.2.8-45.tar.gz
 %if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
 BuildRequires: tcp_wrappers-devel systemd
 %else
@@ -13,6 +13,13 @@ BuildRequires: tcpd-devel systemd-rpm-macros
 %endif
 #BuildRoot: %{_tmppath}/%{name}-root
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+%if 0%{?suse_version} == 1315 || 0%{?is_opensuse}
+# SLES 12 OpenSUSE
+%define opsitftpboot /var/lib/tftpboot
+%else
+%define opsitftpboot /tftpboot
+%endif
 
 %define toplevel_dir %{name}-%{version}
 
@@ -37,13 +44,6 @@ remote machine. TFTP provides very little security, and should not be
 enabled unless it is expressly needed.  The TFTP server is run from
 /etc/xinetd.d/tftp, and is disabled by default on Red Hat Linux systems.
 
-%if 0%{?suse_version} == 1315 || 0%{?suse_version} == 1110
-# SLES 12 / 11
-%define tftpboot /var/lib/tftpboot
-%else
-%define tftpboot /tftpboot
-%endif
-
 %prep
 %setup -q -n opsi-tftp-hpa-%{version}
 %pre
@@ -52,9 +52,9 @@ enabled unless it is expressly needed.  The TFTP server is run from
 %configure
 make %{?_smp_mflags}
 %install 
-%if 0%{?suse_version}
+%if 0%{?suse_version} == 1315 || 0%{?is_opensuse}
   #Adjusting tftpboot directory
-  sed --in-place "s_/tftpboot_${tftpboot}_" "debian/opsi-tftpd-hpa.service" || true
+  sed --in-place "s_/tftpboot_/var/lib/tftpboot_" "debian/opsi-tftpd-hpa.service" || true
 %endif
 #rm -rf ${RPM_BUILD_ROOT}
 install -D -m 644 debian/opsi-tftpd-hpa.service %{buildroot}%{_unitdir}/opsi-tftpd-hpa.service
@@ -94,7 +94,7 @@ systemctl=`which systemctl 2>/dev/null` || true
 if [ ! -z "$systemctl" -a -x "$systemctl" ]; then
     $systemctl enable opsi-tftpd-hpa.service && echo "Enabled opsi-tftpd-hpa.service" || echo "Enabling opsi-tftpd-hpa.service failed!"
 
-    if [ $arg0 -eq 1 ]; then
+    if [ "$arg0" -eq 1 ]; then
         # Install
         $systemctl start opsi-tftpd-hpa.service || true
     else
