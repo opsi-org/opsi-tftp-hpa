@@ -1,3 +1,9 @@
+opsi-tftp-hpa (5.2.8-46) experimental; urgency=medium
+
+  * corrected install/update handling in RPM
+
+ -- Mathias Radtke <m.radtke@uib.de>  Tue, 16 Jan 2018 15:31:26 +0100
+
 opsi-tftp-hpa (5.2.8-45) experimental; urgency=medium
 
   * spec: corrected systemctl handling
