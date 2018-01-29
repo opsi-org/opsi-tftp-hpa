@@ -1,3 +1,10 @@
+opsi-tftp-hpa (5.2.8-47) stable; urgency=medium
+
+  * .deb config: Fix bug when checking for installed version that could
+    lead to an syntax error on an IPv4-only configuration.
+
+ -- Niko Wenselowski <n.wenselowski@uib.de>  Mon, 29 Jan 2018 16:09:01 +0100
+
 opsi-tftp-hpa (5.2.8-46) experimental; urgency=medium
 
   * corrected install/update handling in RPM
@@ -86,20 +93,20 @@ opsi-tftp-hpa (5.2.8-33) experimental; urgency=medium
 opsi-tftp-hpa (5.2.8-32) experimental; urgency=medium
 
   * debian/postinst: fixed typo
-  * rpm/opsi-tftpd-hpa.spec: 
+  * rpm/opsi-tftpd-hpa.spec:
 
  -- Mathias Radtke <m.radtke@uib.de>  Tue, 27 Jun 2017 10:33:43 +0200
 
 opsi-tftp-hpa (5.2.8-31) experimental; urgency=medium
 
-  * more changes to support rpm 
+  * more changes to support rpm
 
  -- Mathias Radtke <m.radtke@uib.de>  Mon, 26 Jun 2017 15:53:11 +0200
 
 opsi-tftp-hpa (5.2.8-30) experimental; urgency=medium
 
   * fixed typo
- 
+
  -- Mathias Radtke <m.radtke@uib.de>  Mon, 26 Jun 2017 15:52:51 +0200
 
 opsi-tftp-hpa (5.2.8-29) experimental; urgency=medium
@@ -147,7 +154,7 @@ opsi-tftp-hpa (5.2.8-23) experimental; urgency=medium
 opsi-tftp-hpa (5.2.8-22) experimental; urgency=medium
 
   * spec: removed obsoleted:opsi-tftpd
- 
+
  -- Mathias Radtke <m.radtke@uib.de>  Thu, 11 May 2017 14:26:53 +0200
 
 opsi-tftp-hpa (5.2.8-21) experimental; urgency=medium
@@ -195,7 +202,6 @@ opsi-tftp-hpa (5.2.8-15) UNRELEASED; urgency=medium
   * spec: tcpd-devel replaces tcp_wrappers-devel
   * added configure
   * using ipv4
-  * 
 
  -- Mathias Radtke <m.radtke@uib.de>  Mon, 20 Mar 2017 09:45:30 +0100
 
@@ -500,14 +506,14 @@ tftp-hpa (5.2-1) unstable; urgency=low
 
 tftp-hpa (5.1-3ubuntu3) precise; urgency=low
 
-  * debian/tftpd-hpa.upstart: Fix typo. (LP: #911135) 
+  * debian/tftpd-hpa.upstart: Fix typo. (LP: #911135)
 
  -- Chuck Short <zulcss@ubuntu.com>  Tue, 03 Jan 2012 08:18:01 -0500
 
 tftp-hpa (5.1-3ubuntu2) precise; urgency=low
 
   * debian/tftpd-hpa.upstart: Fix runlevel transition.
-    (LP: #820698) 
+    (LP: #820698)
 
  -- Chuck Short <zulcss@ubuntu.com>  Mon, 02 Jan 2012 10:20:29 -0500
 
@@ -744,7 +750,7 @@ tftp-hpa (5.0-12) unstable; urgency=low
 tftp-hpa (5.0-11ubuntu2) lucid; urgency=low
 
   * debian/rules, debian/tftpd-hpa.upstart: Convert to upstart.
-    (LP: #522509) 
+    (LP: #522509)
   * debian/tftpd-hpa.postinst: Add "-s" to /etc/default/tftpd-hpa.
     (LP: #531123)
 
