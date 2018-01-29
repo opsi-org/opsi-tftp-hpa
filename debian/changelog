@@ -1,3 +1,10 @@
+opsi-tftp-hpa (5.2.8-47) stable; urgency=medium
+
+  * .deb config: Fix bug when checking for installed version that could
+    lead to an syntax error on an IPv4-only configuration.
+
+ -- Niko Wenselowski <n.wenselowski@uib.de>  Mon, 29 Jan 2018 16:09:01 +0100
+
 opsi-tftp-hpa (5.2.8-46) experimental; urgency=medium
 
   * corrected install/update handling in RPM
