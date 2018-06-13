@@ -45,7 +45,7 @@ case "${1}" in
 				echo "tftpd-hpa directory (${_DIRECTORY}) already exists, doing nothing."
 			fi
 		done
-		if (which ucr); then
+		if (which ucr >/dev/null 2>/dev/null); then
 			sed --in-place "s_/tftpboot_/var/lib/univention-client-boot_g" /lib/systemd/system/opsi-tftpd-hpa.service
 #			sed --in-place "s_--secure__g" /lib/systemd/system/opsi-tftpd-hpa.service
 		fi
