@@ -1,3 +1,9 @@
+opsi-tftp-hpa (5.2.8-48) UNRELEASED; urgency=medium
+
+  * redirecting output of 'which ucr'
+
+ -- Mathias Radtke <m.radtke@uib.de>  Wed, 13 Jun 2018 14:52:54 +0200
+
 opsi-tftp-hpa (5.2.8-47) stable; urgency=medium
 
   * .deb config: Fix bug when checking for installed version that could
