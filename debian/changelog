@@ -1,8 +1,14 @@
-opsi-tftp-hpa (5.2.8-48) UNRELEASED; urgency=medium
+opsi-tftp-hpa (5.2.8-49) experimental; urgency=medium
 
-  * redirecting output of 'which ucr'
+  * service-file: using --ipv4 option to only serve IPv4 addesses
 
- -- Mathias Radtke <m.radtke@uib.de>  Wed, 13 Jun 2018 14:52:54 +0200
+ -- Mathias Radtke <m.radtke@uib.de>  Tue, 26 Jun 2018 13:22:11 +0200
+
+opsi-tftp-hpa (5.2.8-48) experimental; urgency=medium
+
+  * redirecting output of 'which ucr'* 
+
+ -- Mathias Radtke <m.radtke@uib.de>  Tue, 26 Jun 2018 13:21:47 +0200
 
 opsi-tftp-hpa (5.2.8-47) stable; urgency=medium
 
