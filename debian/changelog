@@ -1,3 +1,9 @@
+opsi-tftp-hpa (5.2.8-50) testing; urgency=medium
+
+  * removed change of TFTPROOT when on UCS system
+
+ -- Mathias Radtke <m.radtke@uib.de>  Tue, 06 Aug 2019 07:44:20 +0200
+
 opsi-tftp-hpa (5.2.8-49) experimental; urgency=medium
 
   * service-file: using --ipv4 option to only serve IPv4 addesses
