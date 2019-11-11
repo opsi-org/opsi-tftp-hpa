@@ -5,6 +5,9 @@ stages:
 
 package for OBS:
   stage: package
+  before_script:
+    - apt update
+    - apt -y install gcc
   script:
     - ./configure
     - ./create_source.sh
