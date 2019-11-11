@@ -7,7 +7,7 @@ package for OBS:
   stage: package
   before_script:
     - apt update
-    - apt -y install gcc fakeroot dpkg-dev debhelper autoconf autotools-dev libwrap0-dev po-debconf dh-systemd
+    - apt -y install gcc fakeroot dpkg-dev debhelper autoconf autotools-dev libwrap0-dev po-debconf dh-systemd 
  script:
     - ./configure
     - ./create_source.sh
