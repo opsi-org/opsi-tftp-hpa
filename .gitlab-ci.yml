@@ -7,16 +7,18 @@ package for OBS:
   stage: package
   before_script:
     - apt update
-    - apt -y install gcc fakeroot dpkg-dev debhelper autoconf autotools-dev libwrap0-dev po-debconf dh-systemd 
- script:
-    - ./configure
-    - ./create_source.sh
-    - test -f opsi-tftpd-hpa_*.dsc
-    - test -f opsi-tftpd-hpa_*.tar.gz
-    - test -f opsi-tftpd-hpa.spec
+    - apt -y install gcc fakeroot dpkg-dev debhelper autoconf
+    - apt -y install autotools-dev libwrap0-dev po-debconf dh-systemd
+
+  script:
+   - ./configure
+   - ./create_source.sh
+   - test -f opsi-tftpd-hpa_*.dsc
+   - test -f opsi-tftpd-hpa_*.tar.gz
+   - test -f opsi-tftpd-hpa.spec
   artifacts:
     paths:
-      - opsi-tftpd-hpa_*.dsc
-      - opsi-tftpd-hpa_*.tar.gz
-      - opsi-tftpd-hpa.spec
+     - opsi-tftpd-hpa_*.dsc
+     - opsi-tftpd-hpa_*.tar.gz
+     - opsi-tftpd-hpa.spec
     expire_in: 2 days
