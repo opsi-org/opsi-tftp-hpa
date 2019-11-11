@@ -7,7 +7,7 @@ package for OBS:
   stage: package
   before_script:
     - apt update
-    - apt -y install gcc dpkg-buildpackage
+    - apt -y install gcc fakeroot  dpkg-dev  
   script:
     - ./configure
     - ./create_source.sh
