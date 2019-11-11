@@ -1,0 +1,19 @@
+image: ubuntu:xenial
+
+stages:
+  - package
+
+package for OBS:
+  stage: package
+  script:
+    - ./configure
+    - ./create_source.sh
+    - test -f opsi-tftpd-hpa_*.dsc
+    - test -f opsi-tftpd-hpa_*.tar.gz
+    - test -f opsi-tftpd-hpa.spec
+  artifacts:
+    paths:
+      - opsi-tftpd-hpa_*.dsc
+      - opsi-tftpd-hpa_*.tar.gz
+      - opsi-tftpd-hpa.spec
+    expire_in: 2 days
