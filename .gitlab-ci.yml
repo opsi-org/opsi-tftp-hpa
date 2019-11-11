@@ -13,12 +13,12 @@ package for OBS:
   script:
    - ./configure
    - ./create_source.sh
-   - test -f opsi-tftpd-hpa_*.dsc
-   - test -f opsi-tftpd-hpa_*.tar.gz
-   - test -f opsi-tftpd-hpa.spec
+   - test -f opsi-tftp-hpa_*.dsc
+   - test -f opsi-tftp-hpa_*.tar.gz
+   - test -f opsi-tftp-hpa.spec
   artifacts:
     paths:
-     - opsi-tftpd-hpa_*.dsc
-     - opsi-tftpd-hpa_*.tar.gz
-     - opsi-tftpd-hpa.spec
+     - opsi-tftp-hpa_*.dsc
+     - opsi-tftp-hpa_*.tar.gz
+     - opsi-tftp-hpa.spec
     expire_in: 2 days
