@@ -1,5 +1,11 @@
 opsi-tftp-hpa (5.2.8-51) testing; urgency=medium
 
+  * CentPS/RHEL 8: not requiring tcp_wrappers_devel
+
+ -- Mathias Radtke <m.radtke@uib.de>  Wed, 18 Dec 2019 11:50:18 +0100
+
+opsi-tftp-hpa (5.2.8-51) testing; urgency=medium
+
   * corrected RPM licensing
 
  -- Mathias Radtke <m.radtke@uib.de>  Fri, 30 Aug 2019 08:23:27 +0200
