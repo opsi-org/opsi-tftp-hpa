@@ -1,4 +1,4 @@
-opsi-tftp-hpa (5.2.8-51) testing; urgency=medium
+opsi-tftp-hpa (5.2.8-52) testing; urgency=medium
 
   * CentPS/RHEL 8: not requiring tcp_wrappers_devel
 
