@@ -1,3 +1,9 @@
+opsi-tftp-hpa (5.2.8-52) stable; urgency=medium
+
+  * removing tcp_wrapper-devel from spec file
+
+ -- Erol Ueluekmen <e.ueluekmen@uib.de>  Wed, 05 Feb 2020 22:22:37 +0100
+
 opsi-tftp-hpa (5.2.8-51) testing; urgency=medium
 
   * corrected RPM licensing
