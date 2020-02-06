@@ -1,3 +1,28 @@
+opsi-tftp-hpa (5.2.8-56) testing; urgency=medium
+
+  * spec: divided nested if statement
+
+ -- Mathias Radtke <m.radtke@uib.de>  Wed, 18 Dec 2019 14:07:16 +0100
+
+opsi-tftp-hpa (5.2.8-55) testing; urgency=medium
+
+  * spec: no intendation
+
+ -- Mathias Radtke <m.radtke@uib.de>  Wed, 18 Dec 2019 13:53:16 +0100
+
+opsi-tftp-hpa (5.2.8-54) testing; urgency=medium
+
+  * spec: corrected if conidition for CentOS/RHEL
+
+ -- Mathias Radtke <m.radtke@uib.de>  Wed, 18 Dec 2019 13:44:41 +0100
+
+opsi-tftp-hpa (5.2.8-53) testingD; urgency=medium
+
+  * spec: corrected typo
+  * spec: installing systemd on al CentOS/RHEL versions
+
+ -- Mathias Radtke <m.radtke@uib.de>  Wed, 18 Dec 2019 12:42:55 +0100
+
 opsi-tftp-hpa (5.2.8-52) testing; urgency=medium
 
   * CentPS/RHEL 8: not requiring tcp_wrappers_devel
