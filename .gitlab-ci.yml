@@ -1,0 +1,24 @@
+image: ubuntu:xenial
+
+stages:
+  - package
+
+package for OBS:
+  stage: package
+  before_script:
+    - apt update
+    - apt -y install gcc fakeroot dpkg-dev debhelper autoconf
+    - apt -y install autotools-dev libwrap0-dev po-debconf dh-systemd
+
+  script:
+   - ./configure
+   - ./create_source.sh
+   - test -f opsi-tftp-hpa_*.dsc
+   - test -f opsi-tftp-hpa_*.tar.gz
+   - test -f opsi-tftp-hpa.spec
+  artifacts:
+    paths:
+     - opsi-tftp-hpa_*.dsc
+     - opsi-tftp-hpa_*.tar.gz
+     - opsi-tftp-hpa.spec
+    expire_in: 2 days

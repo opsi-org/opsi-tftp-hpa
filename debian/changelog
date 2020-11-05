@@ -1,3 +1,21 @@
+opsi-tftp-hpa (5.2.8-53) stable; urgency=medium
+
+  * Set default blocksize to 1024
+
+ -- Jan Schneider <j.schneider@uib.de>  Thu, 05 Nov 2020 15:51:18 +0100
+
+opsi-tftp-hpa (5.2.8-52) stable; urgency=medium
+
+  * removing tcp_wrapper-devel from spec file
+
+ -- Erol Ueluekmen <e.ueluekmen@uib.de>  Wed, 05 Feb 2020 22:22:37 +0100
+
+opsi-tftp-hpa (5.2.8-51) testing; urgency=medium
+
+  * corrected RPM licensing
+
+ -- Mathias Radtke <m.radtke@uib.de>  Fri, 30 Aug 2019 08:23:27 +0200
+
 opsi-tftp-hpa (5.2.8-50) testing; urgency=medium
 
   * removed change of TFTPROOT when on UCS system
