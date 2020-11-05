@@ -1,3 +1,9 @@
+opsi-tftp-hpa (5.2.8-53) stable; urgency=medium
+
+  * Set default blocksize to 1024
+
+ -- Jan Schneider <j.schneider@uib.de>  Thu, 05 Nov 2020 15:51:18 +0100
+
 opsi-tftp-hpa (5.2.8-52) stable; urgency=medium
 
   * removing tcp_wrapper-devel from spec file
