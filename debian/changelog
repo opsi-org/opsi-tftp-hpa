@@ -1,7 +1,6 @@
 opsi-tftp-hpa (5.2.8-55) testing; urgency=medium
 
   * added xinetd again
-  * added conditions for RHEL, CentOS and openSUSE
 
  -- Mathias Radtke <m.radtke@uib.de>  Tue, 08 Dec 2020 14:55:23 +0100
 
