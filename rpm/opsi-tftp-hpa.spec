@@ -32,6 +32,9 @@ and should not be enabled unless it is expressly needed.
 %package server
 Group: System Environment/Daemons
 Summary: The server for the Trivial File Transfer Protocol (TFTP).
+%if 0%{?centos_version} || 0%{?rhel_version} || 0%{?is_opensuse}
+Requires: xinetd
+%endif
 Provides: opsi-tftpd
 Obsoletes: opsi-atftp
 Conflicts: opsi-atftp
@@ -64,6 +67,9 @@ mkdir -p ${RPM_BUILD_ROOT}%{_sbindir}
 make INSTALLROOT=${RPM_BUILD_ROOT} \
     SBINDIR=%{_sbindir} MANDIR=%{_mandir} \
 	install
+%if 0%{?centos_version} || 0%{?rhel_version} || 0%{?is_opensuse}
+install -m755 -d ${RPM_BUILD_ROOT}%{_sysconfdir}/xinetd.d/ ${RPM_BUILD_ROOT}/tftpboot
+%endif
 #install -m644 tftp-xinetd ${RPM_BUILD_ROOT}%{_sysconfdir}/xinetd.d/tftp
 #cat <<EOF >$RPM_BUILD_ROOT/%{_sysconfdir}/xinetd.d/tftp
 #service tftp
