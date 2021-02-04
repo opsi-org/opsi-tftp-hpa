@@ -1,11 +1,11 @@
 Summary: 	The client for the Trivial File Transfer Protocol (TFTP)
 Name: 		opsi-tftp-hpa
 Version:        5.2.8
-Release:        54
+Release:        56
 License: 	AGPL-3.0-only
 Group: 		Applications/Internet
 #Source0: http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.gz
-Source:         opsi-tftp-hpa_5.2.8-54.tar.gz
+Source:         opsi-tftp-hpa_5.2.8-56.tar.gz
 %if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
 BuildRequires: systemd
 %else
@@ -14,7 +14,7 @@ BuildRequires: tcpd-devel systemd-rpm-macros
 #BuildRoot: %{_tmppath}/%{name}-root
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-%if 0%{?suse_version} == 1315 || 0%{?is_opensuse}
+%if 0%{?suse_version} || 0%{?is_opensuse}
 # SLES 12 OpenSUSE
 %define opsitftpboot /var/lib/tftpboot
 %else
@@ -32,7 +32,9 @@ and should not be enabled unless it is expressly needed.
 %package server
 Group: System Environment/Daemons
 Summary: The server for the Trivial File Transfer Protocol (TFTP).
+%if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
 Requires: xinetd
+%endif
 Provides: opsi-tftpd
 Obsoletes: opsi-atftp
 Conflicts: opsi-atftp
@@ -52,7 +54,7 @@ enabled unless it is expressly needed.  The TFTP server is run from
 %configure
 make %{?_smp_mflags}
 %install 
-%if 0%{?suse_version} == 1315 || 0%{?is_opensuse}
+%if 0%{?suse_version} || 0%{?is_opensuse}
   #Adjusting tftpboot directory
   sed --in-place "s_/tftpboot_/var/lib/tftpboot_" "debian/opsi-tftpd-hpa.service" || true
 %endif
@@ -65,7 +67,9 @@ mkdir -p ${RPM_BUILD_ROOT}%{_sbindir}
 make INSTALLROOT=${RPM_BUILD_ROOT} \
     SBINDIR=%{_sbindir} MANDIR=%{_mandir} \
 	install
+%if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
 install -m755 -d ${RPM_BUILD_ROOT}%{_sysconfdir}/xinetd.d/ ${RPM_BUILD_ROOT}/tftpboot
+%endif
 #install -m644 tftp-xinetd ${RPM_BUILD_ROOT}%{_sysconfdir}/xinetd.d/tftp
 #cat <<EOF >$RPM_BUILD_ROOT/%{_sysconfdir}/xinetd.d/tftp
 #service tftp
