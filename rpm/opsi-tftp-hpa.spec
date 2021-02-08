@@ -32,9 +32,6 @@ and should not be enabled unless it is expressly needed.
 %package server
 Group: System Environment/Daemons
 Summary: The server for the Trivial File Transfer Protocol (TFTP).
-%if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
-Requires: xinetd
-%endif
 Provides: opsi-tftpd
 Obsoletes: opsi-atftp
 Conflicts: opsi-atftp
@@ -67,25 +64,12 @@ mkdir -p ${RPM_BUILD_ROOT}%{_sbindir}
 make INSTALLROOT=${RPM_BUILD_ROOT} \
     SBINDIR=%{_sbindir} MANDIR=%{_mandir} \
 	install
-%if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
-install -m755 -d ${RPM_BUILD_ROOT}%{_sysconfdir}/xinetd.d/ ${RPM_BUILD_ROOT}/tftpboot
-%endif
-#install -m644 tftp-xinetd ${RPM_BUILD_ROOT}%{_sysconfdir}/xinetd.d/tftp
-#cat <<EOF >$RPM_BUILD_ROOT/%{_sysconfdir}/xinetd.d/tftp
-#service tftp
-#{
-#    disable         = no
-#    socket_type     = dgram
-#    protocol        = udp
-#    wait            = yes
-#    user            = root
-#    server          = %{_sbindir}/in.tftpd
-#    server_args     = -s %{tftpboot} -v -v
-#    per_source      = 11
-#    cps             = 100 2
-#    flags           = IPv4
-#}
-#EOF
+install -d -m 0755 %{buildroot}${opsitftpboot}
+
+install -d %{buildroot}%{_unitdir}
+install -m 0644 %{SOURCE3} %{SOURCE4} %{buildroot}%{_unitdir}
+install -D -m 0644 %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.tftp
+ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %post server
 arg0=$1
