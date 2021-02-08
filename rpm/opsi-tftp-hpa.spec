@@ -45,11 +45,22 @@ enabled unless it is expressly needed.  The TFTP server is run from
 
 %prep
 %setup -q -n opsi-tftp-hpa-%{version}
+
 %pre
-%service_add_pre opsi-tftpd-hpa.service
+# This group/user is shared with atftp, so please
+# keep this in sync with atftp.spec
+# add group
+%{_sbindir}/groupadd -r tftp 2>/dev/null || :
+# add user
+%{_sbindir}/useradd -c "TFTP account" -d /srv/tftpboot -G tftp -g tftp \
+  -r -s /bin/false tftp 2>/dev/null || :
+
+%service_add_pre opsi-tftpd-hpa.service opsi-tftpd-hpa.socket
+
 %build
 %configure
 make %{?_smp_mflags}
+
 %install 
 %if 0%{?suse_version} || 0%{?is_opensuse}
   #Adjusting tftpboot directory
@@ -67,16 +78,16 @@ make INSTALLROOT=${RPM_BUILD_ROOT} \
 install -d -m 0755 %{buildroot}${opsitftpboot}
 
 install -d %{buildroot}%{_unitdir}
-install -m 0644 %{SOURCE3} %{SOURCE4} %{buildroot}%{_unitdir}
-install -D -m 0644 %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.tftp
+install -m 0644 debian/opsi-tftpd-hpa.socket %{SOURCE4} %{buildroot}%{_unitdir}/opsi-tftpd-hpa.socket
+install -D -m 0644 debian/opsi-tftpd-hpa.sysconfig %{buildroot}%{_fillupdir}/sysconfig.tftp
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %post server
 arg0=$1
 %if 0%{?rhel_version} || 0%{?centos_version}
-%systemd_post opsi-tftpd-hpa.service
+%systemd_post opsi-tftpd-hpa.service opsi-tftpd-hpa.socket
 %else
-%service_add_post opsi-tftpd-hpa.service
+%service_add_post opsi-tftpd-hpa.service opsi-tftpd-hpa.socket
 %endif
 
 systemctl=`which systemctl 2>/dev/null` || true
@@ -94,17 +105,17 @@ fi
 
 %preun server
 %if 0%{?rhel_version} || 0%{?centos_version}
-%systemd_preun opsi-tftpd-hpa.service
+%systemd_preun opsi-tftpd-hpa.service opsi-tftpd-hpa.socket
 %else
-%service_del_preun opsi-tftpd-hpa.service
+%service_del_preun opsi-tftpd-hpa.service opsi-tftpd-hpa.socket
 %endif
 
 
 %postun server
 %if 0%{?rhel_version} || 0%{?centos_version}
-%systemd_postun opsi-tftpd-hpa.service
+%systemd_postun opsi-tftpd-hpa.service opsi-tftpd-hpa.socket
 %else
-%service_del_postun opsi-tftpd-hpa.service
+%service_del_postun opsi-tftpd-hpa.service opsi-tftpd-hpa.socket
 %endif
 
 #%clean
@@ -120,6 +131,7 @@ fi
 %{_unitdir}/opsi-tftpd-hpa.service
 %dir /tftpboot
 %{_sbindir}/in.tftpd
+%{_sbindir}/rc${name}
 %{_mandir}/man8/*
 
 # ===[ changelog ]==================================
