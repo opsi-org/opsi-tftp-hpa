@@ -23,4 +23,4 @@ TFTP_OPTIONS=""
 #  TFTP directory must be a world readable/writable directory.
 #  By default /srv/tftpboot is assumed.
 #
-TFTP_DIRECTORY="/srv/tftpboot"
+TFTP_DIRECTORY="/var/lib/tftpboot"
