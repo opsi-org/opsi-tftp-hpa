@@ -15,7 +15,7 @@ BuildRequires: tcpd-devel systemd-rpm-macros
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %if 0%{?suse_version} || 0%{?is_opensuse}
-# SLES 12 OpenSUSE
+# SLES && OpenSUSE
 %define opsitftpboot /var/lib/tftpboot
 %else
 %define opsitftpboot /tftpboot
