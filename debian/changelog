@@ -1,3 +1,10 @@
+opsi-tftd-hpa (5.2.9-1) testing; urgency=low
+
+  * used only on opsi 4.2
+  * uses systemd sockets on RPM machines
+
+ -- Mathias Radtke <m.radtke@uib.de> Mon, 08 Feb 2021 12:29:00 +0100
+
 opsi-tftp-hpa (5.2.8-57) testing; urgency=medium
 
   * spec: removed some is_opensuse conditionals
