@@ -1,3 +1,9 @@
+opsi-tftp-hpa (5.2.9-12) testing; urgency=medium
+
+  * using units directory
+
+ -- Mathias Radtke <m.radtke@uib.de>  Fri, 12 Feb 2021 13:30:47 +0100
+
 opsi-tftp-hpa (5.2.9-11) testing; urgency=medium
 
   * deb: added socket file to rules
