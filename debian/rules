@@ -13,6 +13,8 @@ NJOBS    = -j$(or $(PARALLEL),$(NUM_CPUS),1)
 DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 
+override_dh_auto_install:
+	install -D -m 644 debian/opsi-tftpd-hpa.socket debian/opsi-tftpd-hpa/lib/systemd/system/opsi-tftpd-hpa.socket
 
 clean:
 	dh_testdir

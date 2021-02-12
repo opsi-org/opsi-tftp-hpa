@@ -1,11 +1,15 @@
+%if ! %{defined _fillupdir}
+  %define _fillupdir /var/adm/fillup-templates
+%endif
+
 Summary: 	The client for the Trivial File Transfer Protocol (TFTP)
 Name: 		opsi-tftp-hpa
 Version:        5.2.9
-Release:        1
+Release:        11
 License: 	AGPL-3.0-only
 Group: 		Applications/Internet
 #Source0: http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.gz
-Source:         opsi-tftp-hpa_5.2.9-1.tar.gz
+Source:         opsi-tftp-hpa_5.2.9-11.tar.gz
 %if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
 BuildRequires: systemd
 %else
@@ -46,17 +50,6 @@ enabled unless it is expressly needed.  The TFTP server is run from
 %prep
 %setup -q -n opsi-tftp-hpa-%{version}
 
-%pre
-# This group/user is shared with atftp, so please
-# keep this in sync with atftp.spec
-# add group
-%{_sbindir}/groupadd -r tftp 2>/dev/null || :
-# add user
-%{_sbindir}/useradd -c "TFTP account" -d /srv/tftpboot -G tftp -g tftp \
-  -r -s /bin/false tftp 2>/dev/null || :
-
-%service_add_pre opsi-tftpd-hpa.service opsi-tftpd-hpa.socket
-
 %build
 %configure
 make %{?_smp_mflags}
@@ -64,23 +57,34 @@ make %{?_smp_mflags}
 %install 
 %if 0%{?suse_version} || 0%{?is_opensuse}
   #Adjusting tftpboot directory
-  sed --in-place "s_/tftpboot_/var/lib/tftpboot_" "debian/opsi-tftpd-hpa.service" || true
+  sed --in-place "s_/tftpboot_/var/lib/tftpboot_" "units/opsi-tftpd-hpa.service" || true
 %endif
 #rm -rf ${RPM_BUILD_ROOT}
-install -D -m 644 debian/opsi-tftpd-hpa.service %{buildroot}%{_unitdir}/opsi-tftpd-hpa.service
+install -D -m 644 units/opsi-tftpd-hpa.service %{buildroot}%{_unitdir}/opsi-tftpd-hpa.service
 mkdir -p ${RPM_BUILD_ROOT}%{_bindir}
 mkdir -p ${RPM_BUILD_ROOT}%{_mandir}/man{1,8}
 mkdir -p ${RPM_BUILD_ROOT}%{_sbindir}
-#mkdir -p ${RPM_BUILD_ROOT}/tftpboot
+mkdir -p ${RPM_BUILD_ROOT}%{opsitftpboot}
 make INSTALLROOT=${RPM_BUILD_ROOT} \
     SBINDIR=%{_sbindir} MANDIR=%{_mandir} \
 	install
-install -d -m 0755 %{buildroot}${opsitftpboot}
+install -d -m 0755 %{buildroot}%{opsitftpboot}
 
 install -d %{buildroot}%{_unitdir}
-install -m 0644 debian/opsi-tftpd-hpa.socket %{SOURCE4} %{buildroot}%{_unitdir}/opsi-tftpd-hpa.socket
+install -m 0644 units/opsi-tftpd-hpa.socket %{buildroot}%{_unitdir}/opsi-tftpd-hpa.socket
 install -D -m 0644 debian/opsi-tftpd-hpa.sysconfig %{buildroot}%{_fillupdir}/sysconfig.tftp
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+
+%pre
+# This group/user is shared with atftp, so please
+# keep this in sync with atftp.spec
+# add group
+%{_sbindir}/groupadd -r tftp 2>/dev/null || :
+# add user
+%{_sbindir}/useradd -c "TFTP account" -d %{opsitftpboot} -G tftp -g tftp \
+  -r -s /bin/false tftp 2>/dev/null || :
+
+%service_add_pre opsi-tftpd-hpa.service opsi-tftpd-hpa.socket
 
 %post server
 arg0=$1
@@ -127,12 +131,15 @@ fi
 %{_mandir}/man1/*
 %files server
 %defattr(-,root,root)
-#%config(noreplace) %{_sysconfdir}/xinetd.d/tftp
 %{_unitdir}/opsi-tftpd-hpa.service
-%dir /tftpboot
+%{_unitdir}/opsi-tftpd-hpa.socket
+#%dir %{opsitftpboot}
 %{_sbindir}/in.tftpd
-%{_sbindir}/rc${name}
+%{_sbindir}/rc%{name}
 %{_mandir}/man8/*
+
+%dir %attr(0755,tftp,tftp) %{opsitftpboot}
+%{_fillupdir}/sysconfig.tftp
 
 # ===[ changelog ]==================================
 %changelog
