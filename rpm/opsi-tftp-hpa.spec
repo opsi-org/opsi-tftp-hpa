@@ -136,7 +136,7 @@ fi
 %{_sbindir}/rc%{name}
 %{_mandir}/man8/*
 
-%dir %attr(0755,tftp,tftp) %{opsitftpboot}
+#%dir %attr(0755,tftp,tftp) %{opsitftpboot}
 %{_fillupdir}/sysconfig.tftp
 
 # ===[ changelog ]==================================

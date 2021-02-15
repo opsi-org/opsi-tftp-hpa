@@ -1,3 +1,9 @@
+opsi-tftp-hpa (5.2.8-72) testing; urgency=medium
+
+  * spec: removed tftpboot directory from dirs
+
+ -- Mathias Radtke <m.radtke@uib.de>  Mon, 15 Feb 2021 15:09:29 +0100
+
 opsi-tftp-hpa (5.2.8-71) testing; urgency=medium
 
   * version bump to match RPM packaging version
