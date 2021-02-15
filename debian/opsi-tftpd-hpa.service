@@ -5,8 +5,7 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/sbin/in.tftpd -v --ipv4 --secure --blocksize 1024 /tftpboot/
-StandardInput=socket
+ExecStart=/usr/sbin/in.tftpd -v --ipv4 --listen --address :69 --secure --blocksize 1024 /tftpboot/
 PrivateDevices=yes
 Restart=on-failure
 RestartSec=5
