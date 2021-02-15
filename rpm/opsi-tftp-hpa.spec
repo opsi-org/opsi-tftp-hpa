@@ -5,11 +5,11 @@
 Summary: 	The client for the Trivial File Transfer Protocol (TFTP)
 Name: 		opsi-tftp-hpa
 Version:        5.2.9
-Release:        12
+Release:        16
 License: 	AGPL-3.0-only
 Group: 		Applications/Internet
 #Source0: http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.gz
-Source:         opsi-tftp-hpa_5.2.9-12.tar.gz
+Source:         opsi-tftp-hpa_5.2.9-16.tar.gz
 %if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
 BuildRequires: systemd
 %else
@@ -57,10 +57,10 @@ make %{?_smp_mflags}
 %install 
 %if 0%{?suse_version} || 0%{?is_opensuse}
   #Adjusting tftpboot directory
-  sed --in-place "s_/tftpboot_/var/lib/tftpboot_" "units/opsi-tftpd-hpa.service" || true
+  sed --in-place "s_/tftpboot_/var/lib/tftpboot_" "debian/opsi-tftpd-hpa.service" || true
 %endif
 #rm -rf ${RPM_BUILD_ROOT}
-install -D -m 644 units/opsi-tftpd-hpa.service %{buildroot}%{_unitdir}/opsi-tftpd-hpa.service
+install -D -m 644 debian/opsi-tftpd-hpa.service %{buildroot}%{_unitdir}/opsi-tftpd-hpa.service
 mkdir -p ${RPM_BUILD_ROOT}%{_bindir}
 mkdir -p ${RPM_BUILD_ROOT}%{_mandir}/man{1,8}
 mkdir -p ${RPM_BUILD_ROOT}%{_sbindir}
@@ -71,7 +71,7 @@ make INSTALLROOT=${RPM_BUILD_ROOT} \
 install -d -m 0755 %{buildroot}%{opsitftpboot}
 
 install -d %{buildroot}%{_unitdir}
-install -m 0644 units/opsi-tftpd-hpa.socket %{buildroot}%{_unitdir}/opsi-tftpd-hpa.socket
+install -m 0644 debian/opsi-tftpd-hpa.socket %{buildroot}%{_unitdir}/opsi-tftpd-hpa.socket
 install -D -m 0644 debian/opsi-tftpd-hpa.sysconfig %{buildroot}%{_fillupdir}/sysconfig.tftp
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 

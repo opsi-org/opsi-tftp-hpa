@@ -7,6 +7,7 @@ After=network.target
 Type=forking
 ExecStart=/usr/sbin/in.tftpd -v --ipv4 --secure --blocksize 1024 /tftpboot/
 StandardInput=socket
+PrivateDevices=yes
 Restart=on-failure
 RestartSec=5
 KillMode=process

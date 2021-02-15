@@ -1,3 +1,27 @@
+opsi-tftp-hpa (5.2.9-16) testing; urgency=medium
+
+  * corrected install behaviour in debian
+
+ -- Mathias Radtke <m.radtke@uib.de>  Fri, 12 Feb 2021 14:53:13 +0100
+
+opsi-tftp-hpa (5.2.9-15) testing; urgency=medium
+
+  * typo 
+
+ -- Mathias Radtke <m.radtke@uib.de>  Fri, 12 Feb 2021 14:37:53 +0100
+
+opsi-tftp-hpa (5.2.9-14) testing; urgency=medium
+
+  * debian/install: explicitly using service/socket file
+
+ -- Mathias Radtke <m.radtke@uib.de>  Fri, 12 Feb 2021 14:32:55 +0100
+
+opsi-tftp-hpa (5.2.9-13) testing; urgency=medium
+
+  * not using units
+
+ -- Mathias Radtke <m.radtke@uib.de>  Fri, 12 Feb 2021 14:15:05 +0100
+
 opsi-tftp-hpa (5.2.9-12) testing; urgency=medium
 
   * using units directory
