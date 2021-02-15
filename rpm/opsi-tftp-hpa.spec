@@ -71,7 +71,6 @@ make INSTALLROOT=${RPM_BUILD_ROOT} \
 install -d -m 0755 %{buildroot}%{opsitftpboot}
 
 install -d %{buildroot}%{_unitdir}
-install -m 0644 debian/opsi-tftpd-hpa.socket %{buildroot}%{_unitdir}/opsi-tftpd-hpa.socket
 install -D -m 0644 debian/opsi-tftpd-hpa.sysconfig %{buildroot}%{_fillupdir}/sysconfig.tftp
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
@@ -84,14 +83,14 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_sbindir}/useradd -c "TFTP account" -d %{opsitftpboot} -G tftp -g tftp \
   -r -s /bin/false tftp 2>/dev/null || :
 
-%service_add_pre opsi-tftpd-hpa.service opsi-tftpd-hpa.socket
+%service_add_pre opsi-tftpd-hpa.service
 
 %post server
 arg0=$1
 %if 0%{?rhel_version} || 0%{?centos_version}
-%systemd_post opsi-tftpd-hpa.service opsi-tftpd-hpa.socket
+%systemd_post opsi-tftpd-hpa.service
 %else
-%service_add_post opsi-tftpd-hpa.service opsi-tftpd-hpa.socket
+%service_add_post opsi-tftpd-hpa.service 
 %endif
 
 systemctl=`which systemctl 2>/dev/null` || true
@@ -109,17 +108,17 @@ fi
 
 %preun server
 %if 0%{?rhel_version} || 0%{?centos_version}
-%systemd_preun opsi-tftpd-hpa.service opsi-tftpd-hpa.socket
+%systemd_preun opsi-tftpd-hpa.service 
 %else
-%service_del_preun opsi-tftpd-hpa.service opsi-tftpd-hpa.socket
+%service_del_preun opsi-tftpd-hpa.service
 %endif
 
 
 %postun server
 %if 0%{?rhel_version} || 0%{?centos_version}
-%systemd_postun opsi-tftpd-hpa.service opsi-tftpd-hpa.socket
+%systemd_postun opsi-tftpd-hpa.service
 %else
-%service_del_postun opsi-tftpd-hpa.service opsi-tftpd-hpa.socket
+%service_del_postun opsi-tftpd-hpa.service
 %endif
 
 #%clean
@@ -132,7 +131,6 @@ fi
 %files server
 %defattr(-,root,root)
 %{_unitdir}/opsi-tftpd-hpa.service
-%{_unitdir}/opsi-tftpd-hpa.socket
 #%dir %{opsitftpboot}
 %{_sbindir}/in.tftpd
 %{_sbindir}/rc%{name}
