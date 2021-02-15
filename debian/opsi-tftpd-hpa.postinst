@@ -45,9 +45,8 @@ case "${1}" in
 				echo "tftpd-hpa directory (${_DIRECTORY}) already exists, doing nothing."
 			fi
 		done
-		systemctl enable opsi-tftpd-hpa.socket || echo "failed to add service opsi-tftpd-hpa to boot, please set it manually via systemctl"
 		systemctl enable opsi-tftpd-hpa.service || echo "failed to add service opsi-tftpd-hpa to boot, please set it manually via systemctl"
-		systemctl start opsi-tftpd-hpa.socket || echo "socket opsi-tftpd-hpa did not start autmatically, please start it manually"
+		systemctl start opsi-tftpd-hpa.service || echo "failed to start service opsi-tftpd-hpa to boot, please set it manually via systemctl"
 		;;
 
 	abort-upgrade|abort-remove|abort-deconfigure)
