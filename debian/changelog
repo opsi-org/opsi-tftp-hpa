@@ -1,94 +1,9 @@
-opsi-tftp-hpa (5.2.9-16) testing; urgency=medium
+opsi-tftp-hpa (5.2.8-71) testing; urgency=medium
 
-  * corrected install behaviour in debian
+  * version bump to match RPM packaging version
+  * not using xinetd in RPM distros
 
- -- Mathias Radtke <m.radtke@uib.de>  Fri, 12 Feb 2021 14:53:13 +0100
-
-opsi-tftp-hpa (5.2.9-15) testing; urgency=medium
-
-  * typo 
-
- -- Mathias Radtke <m.radtke@uib.de>  Fri, 12 Feb 2021 14:37:53 +0100
-
-opsi-tftp-hpa (5.2.9-14) testing; urgency=medium
-
-  * debian/install: explicitly using service/socket file
-
- -- Mathias Radtke <m.radtke@uib.de>  Fri, 12 Feb 2021 14:32:55 +0100
-
-opsi-tftp-hpa (5.2.9-13) testing; urgency=medium
-
-  * not using units
-
- -- Mathias Radtke <m.radtke@uib.de>  Fri, 12 Feb 2021 14:15:05 +0100
-
-opsi-tftp-hpa (5.2.9-12) testing; urgency=medium
-
-  * using units directory
-
- -- Mathias Radtke <m.radtke@uib.de>  Fri, 12 Feb 2021 13:30:47 +0100
-
-opsi-tftp-hpa (5.2.9-11) testing; urgency=medium
-
-  * deb: added socket file to rules
-
- -- Mathias Radtke <m.radtke@uib.de>  Fri, 12 Feb 2021 12:47:54 +0100
-
-opsi-tftp-hpa (5.2.9-10) testing; urgency=medium
-
-  * spec: removed --listen option from service file
-
- -- Mathias Radtke <m.radtke@uib.de>  Thu, 11 Feb 2021 16:16:47 +0100
-
-opsi-tftp-hpa (5.2.9-9) testing; urgency=medium
-
-  * removed port from service file
-
- -- Mathias Radtke <m.radtke@uib.de>  Mon, 08 Feb 2021 17:06:38 +0100
-
-opsi-tftp-hpa (5.2.9-8) testing; urgency=medium
-
-  * socket now handles port
-
- -- Mathias Radtke <m.radtke@uib.de>  Mon, 08 Feb 2021 16:24:15 +0100
-
-opsi-tftp-hpa (5.2.9-7) testing; urgency=medium
-
-  * spec: moved %pre after install
-
- -- Mathias Radtke <m.radtke@uib.de>  Mon, 08 Feb 2021 14:17:41 +0100
-
-opsi-tftp-hpa (5.2.9-6) testing; urgency=medium
-
-  * added _fillup macro definition
-
- -- Mathias Radtke <m.radtke@uib.de>  Mon, 08 Feb 2021 13:34:54 +0100
-
-opsi-tftp-hpa (5.2.9-5) testing; urgency=medium
-
-  * version bump
-  * spec. corrected fkcups
-
- -- Mathias Radtke <m.radtke@uib.de>  Mon, 08 Feb 2021 13:34:34 +0100
-
-opsi-tftp-hpa (5.2.9-3) testing; urgency=medium
-
-  * spec: corrected usage of $ and %
-
- -- Mathias Radtke <m.radtke@uib.de>  Mon, 08 Feb 2021 13:10:38 +0100
-
-opsi-tftp-hpa (5.2.9-2) testing; urgency=medium
-
-  * spec: corrected typo
-
- -- Mathias Radtke <m.radtke@uib.de>  Mon, 08 Feb 2021 13:04:24 +0100
-
-opsi-tftp-hpa (5.2.9-1) testing; urgency=medium
-
-  * used only on opsi 4.2
-  * uses systemd sockets on RPM machines
-
- -- Mathias Radtke <m.radtke@uib.de>  Mon, 08 Feb 2021 12:30:36 +0100
+ -- Mathias Radtke <m.radtke@uib.de>  Mon, 15 Feb 2021 13:23:46 +0100
 
 opsi-tftp-hpa (5.2.8-57) testing; urgency=medium
 
