@@ -1,11 +1,15 @@
+%if ! %{defined _fillupdir}
+  %define _fillupdir /var/adm/fillup-templates
+%endif
+
 Summary: 	The client for the Trivial File Transfer Protocol (TFTP)
 Name: 		opsi-tftp-hpa
-Version:        5.2.8
-Release:        53
+Version:        5.2.9
+Release:        17
 License: 	AGPL-3.0-only
 Group: 		Applications/Internet
 #Source0: http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.gz
-Source:         opsi-tftp-hpa_5.2.8-53.tar.gz
+Source:         opsi-tftp-hpa_5.2.9-17.tar.gz
 %if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
 BuildRequires: systemd
 %else
@@ -14,8 +18,8 @@ BuildRequires: tcpd-devel systemd-rpm-macros
 #BuildRoot: %{_tmppath}/%{name}-root
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-%if 0%{?suse_version} == 1315 || 0%{?is_opensuse}
-# SLES 12 OpenSUSE
+%if 0%{?suse_version} || 0%{?is_opensuse}
+# SLES && OpenSUSE
 %define opsitftpboot /var/lib/tftpboot
 %else
 %define opsitftpboot /tftpboot
@@ -32,7 +36,6 @@ and should not be enabled unless it is expressly needed.
 %package server
 Group: System Environment/Daemons
 Summary: The server for the Trivial File Transfer Protocol (TFTP).
-Requires: xinetd
 Provides: opsi-tftpd
 Obsoletes: opsi-atftp
 Conflicts: opsi-atftp
@@ -46,13 +49,13 @@ enabled unless it is expressly needed.  The TFTP server is run from
 
 %prep
 %setup -q -n opsi-tftp-hpa-%{version}
-%pre
-%service_add_pre opsi-tftpd-hpa.service
+
 %build
 %configure
 make %{?_smp_mflags}
+
 %install 
-%if 0%{?suse_version} == 1315 || 0%{?is_opensuse}
+%if 0%{?suse_version} || 0%{?is_opensuse}
   #Adjusting tftpboot directory
   sed --in-place "s_/tftpboot_/var/lib/tftpboot_" "debian/opsi-tftpd-hpa.service" || true
 %endif
@@ -61,34 +64,33 @@ install -D -m 644 debian/opsi-tftpd-hpa.service %{buildroot}%{_unitdir}/opsi-tft
 mkdir -p ${RPM_BUILD_ROOT}%{_bindir}
 mkdir -p ${RPM_BUILD_ROOT}%{_mandir}/man{1,8}
 mkdir -p ${RPM_BUILD_ROOT}%{_sbindir}
-#mkdir -p ${RPM_BUILD_ROOT}/tftpboot
+mkdir -p ${RPM_BUILD_ROOT}%{opsitftpboot}
 make INSTALLROOT=${RPM_BUILD_ROOT} \
     SBINDIR=%{_sbindir} MANDIR=%{_mandir} \
 	install
-install -m755 -d ${RPM_BUILD_ROOT}%{_sysconfdir}/xinetd.d/ ${RPM_BUILD_ROOT}/tftpboot
-#install -m644 tftp-xinetd ${RPM_BUILD_ROOT}%{_sysconfdir}/xinetd.d/tftp
-#cat <<EOF >$RPM_BUILD_ROOT/%{_sysconfdir}/xinetd.d/tftp
-#service tftp
-#{
-#    disable         = no
-#    socket_type     = dgram
-#    protocol        = udp
-#    wait            = yes
-#    user            = root
-#    server          = %{_sbindir}/in.tftpd
-#    server_args     = -s %{tftpboot} -v -v
-#    per_source      = 11
-#    cps             = 100 2
-#    flags           = IPv4
-#}
-#EOF
+install -d -m 0755 %{buildroot}%{opsitftpboot}
+
+install -d %{buildroot}%{_unitdir}
+install -D -m 0644 debian/opsi-tftpd-hpa.sysconfig %{buildroot}%{_fillupdir}/sysconfig.tftp
+ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+
+%pre
+# This group/user is shared with atftp, so please
+# keep this in sync with atftp.spec
+# add group
+%{_sbindir}/groupadd -r tftp 2>/dev/null || :
+# add user
+%{_sbindir}/useradd -c "TFTP account" -d %{opsitftpboot} -G tftp -g tftp \
+  -r -s /bin/false tftp 2>/dev/null || :
+
+%service_add_pre opsi-tftpd-hpa.service
 
 %post server
 arg0=$1
 %if 0%{?rhel_version} || 0%{?centos_version}
 %systemd_post opsi-tftpd-hpa.service
 %else
-%service_add_post opsi-tftpd-hpa.service
+%service_add_post opsi-tftpd-hpa.service 
 %endif
 
 systemctl=`which systemctl 2>/dev/null` || true
@@ -106,7 +108,7 @@ fi
 
 %preun server
 %if 0%{?rhel_version} || 0%{?centos_version}
-%systemd_preun opsi-tftpd-hpa.service
+%systemd_preun opsi-tftpd-hpa.service 
 %else
 %service_del_preun opsi-tftpd-hpa.service
 %endif
@@ -128,11 +130,14 @@ fi
 %{_mandir}/man1/*
 %files server
 %defattr(-,root,root)
-#%config(noreplace) %{_sysconfdir}/xinetd.d/tftp
 %{_unitdir}/opsi-tftpd-hpa.service
-%dir /tftpboot
+#%dir %{opsitftpboot}
 %{_sbindir}/in.tftpd
+%{_sbindir}/rc%{name}
 %{_mandir}/man8/*
+
+#%dir %attr(0755,tftp,tftp) %{opsitftpboot}
+%{_fillupdir}/sysconfig.tftp
 
 # ===[ changelog ]==================================
 %changelog

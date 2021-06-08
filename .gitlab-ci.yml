@@ -2,6 +2,7 @@ image: ubuntu:xenial
 
 stages:
   - package
+  - release
 
 package for OBS:
   stage: package

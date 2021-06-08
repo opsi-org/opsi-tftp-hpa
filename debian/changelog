@@ -1,3 +1,40 @@
+opsi-tftp-hpa (5.2.8-72) testing; urgency=medium
+
+  * spec: removed tftpboot directory from dirs
+
+ -- Mathias Radtke <m.radtke@uib.de>  Mon, 15 Feb 2021 15:09:29 +0100
+
+opsi-tftp-hpa (5.2.8-71) testing; urgency=medium
+
+  * version bump to match RPM packaging version
+  * not using xinetd in RPM distros
+
+ -- Mathias Radtke <m.radtke@uib.de>  Mon, 15 Feb 2021 13:23:46 +0100
+
+opsi-tftp-hpa (5.2.8-57) testing; urgency=medium
+
+  * spec: removed some is_opensuse conditionals
+
+ -- Mathias Radtke <m.radtke@uib.de>  Thu, 04 Feb 2021 12:42:03 +0100
+
+opsi-tftp-hpa (5.2.8-56) testing; urgency=medium
+
+  * spec: only using inetd on RHEL/CENTOS and OpenSUSE
+
+ -- Mathias Radtke <m.radtke@uib.de>  Tue, 15 Dec 2020 12:17:01 +0100
+
+opsi-tftp-hpa (5.2.8-55) testing; urgency=medium
+
+  * added xinetd again
+
+ -- Mathias Radtke <m.radtke@uib.de>  Tue, 08 Dec 2020 14:55:23 +0100
+
+opsi-tftp-hpa (5.2.8-54) stable; urgency=medium
+
+  * removed xinetd references
+
+ -- Mathias Radtke <m.radtke@uib.de>  Mon, 16 Nov 2020 15:19:03 +0100
+
 opsi-tftp-hpa (5.2.8-53) stable; urgency=medium
 
   * Set default blocksize to 1024
