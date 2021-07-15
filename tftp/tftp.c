@@ -44,11 +44,11 @@ extern int trace;
 extern int verbose;
 extern int rexmtval;
 extern int maxtimeout;
+extern sigjmp_buf toplevel;
 
 #define PKTSIZE    SEGSIZE+4
 char ackbuf[PKTSIZE];
 int timeout;
-extern sigjmp_buf toplevel;
 sigjmp_buf timeoutbuf;
 
 static void nak(int, const char *);
