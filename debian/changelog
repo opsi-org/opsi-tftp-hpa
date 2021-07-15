@@ -1,4 +1,4 @@
-opsi-tftp-hpa (5.2.8.75) testing; urgency=medium
+opsi-tftp-hpa (5.2.8-75) testing; urgency=medium
 
   * tftp/tftp.c: made sigjmp_buf toplevel extern
 
