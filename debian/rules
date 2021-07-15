@@ -39,7 +39,7 @@ build-indep:
 
 build-arch-stamp: config.status
 	dh_testdir
-	$(MAKE) $(NJOBS) lib common tftpd
+	$(MAKE) $(NJOBS) all
 	touch $@
 
 
