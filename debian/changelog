@@ -1,3 +1,9 @@
+opsi-tftp-hpa (5.2.8-73) testing; urgency=medium
+
+  * sdebian/rules: no more tftp builds
+
+ -- Mathias Radtke <m.radtke@uib.de>  Thu, 15 Jul 2021 12:30:00 +0100
+
 opsi-tftp-hpa (5.2.8-72) testing; urgency=medium
 
   * spec: removed tftpboot directory from dirs
