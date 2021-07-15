@@ -4,12 +4,12 @@
 
 Summary: 	The client for the Trivial File Transfer Protocol (TFTP)
 Name: 		opsi-tftp-hpa
-Version:        5.2.8
-Release:        74
+Version:        5.2.8.75
+Release:        5.2.8.75
 License: 	AGPL-3.0-only
 Group: 		Applications/Internet
 #Source0: http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.gz
-Source:         opsi-tftp-hpa_5.2.8-74.tar.gz
+Source:         opsi-tftp-hpa_5.2.8.75-5.2.8.75.tar.gz
 %if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
 BuildRequires: systemd
 %else
