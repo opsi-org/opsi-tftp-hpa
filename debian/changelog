@@ -1,3 +1,27 @@
+opsi-tftp-hpa (5.2.8-76) testing; urgency=medium
+
+  * debian/rules: reverted changes
+
+ -- Mathias Radtke <m.radtke@uib.de>  Thu, 15 Jul 2021 14:11:00 +0100
+
+opsi-tftp-hpa (5.2.8-75) testing; urgency=medium
+
+  * tftp/tftp.c: made sigjmp_buf toplevel extern
+
+ -- Mathias Radtke <m.radtke@uib.de>  Thu, 15 Jul 2021 13:53:00 +0100
+
+opsi-tftp-hpa (5.2.8-74) testing; urgency=medium
+
+  * debian/rules: make tftpd.build is used
+
+ -- Mathias Radtke <m.radtke@uib.de>  Thu, 15 Jul 2021 13:23:00 +0100
+
+opsi-tftp-hpa (5.2.8-73) testing; urgency=medium
+
+  * sdebian/rules: no more tftp builds
+
+ -- Mathias Radtke <m.radtke@uib.de>  Thu, 15 Jul 2021 12:30:00 +0100
+
 opsi-tftp-hpa (5.2.8-72) testing; urgency=medium
 
   * spec: removed tftpboot directory from dirs
