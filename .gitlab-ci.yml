@@ -1,4 +1,4 @@
-image: ubuntu:xenial
+image: ubuntu:focal
 
 stages:
   - package
@@ -10,16 +10,20 @@ package for OBS:
     - apt update
     - apt -y install gcc fakeroot dpkg-dev debhelper autoconf
     - apt -y install autotools-dev libwrap0-dev po-debconf dh-systemd
-
+    - apt -y install debhelper osc python3-pip
+    - pip3 install --trusted-host pypi.uib.gmbh --index-url http://pypi.uib.gmbh:8080/simple opsi-dev-tools
   script:
    - ./configure
    - ./create_source.sh
    - test -f opsi-tftp-hpa_*.dsc
    - test -f opsi-tftp-hpa_*.tar.gz
    - test -f opsi-tftp-hpa.spec
+   - python3 -m opsidevtools -l info --obs-replace-files https://build.opensuse.org home:uibmz:opsi:4.2:development opsi-tftp-hpa opsi-tftp-hpa_*.dsc opsi-tftp-hpa_*.tar.gz opsi-tftp-hpa.spec
   artifacts:
     paths:
      - opsi-tftp-hpa_*.dsc
      - opsi-tftp-hpa_*.tar.gz
      - opsi-tftp-hpa.spec
     expire_in: 2 days
+  only:
+    - tags

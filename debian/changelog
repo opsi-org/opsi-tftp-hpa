@@ -1,3 +1,9 @@
+opsi-tftp-hpa (5.2.8-74) testing; urgency=low
+
+  * debian/rules: removed dh-systemd dependency for Ubuntu 22.04 support
+
+ -- Mathias Radtke <m.radtke@uib.de> Thu, 17 Mar 2022 14:55:00 +0200
+
 opsi-tftp-hpa (5.2.8-73) testing; urgency=medium
 
   * sdebian/rules: no more tftp builds
