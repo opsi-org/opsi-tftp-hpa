@@ -12,10 +12,10 @@ package for OBS:
     - echo "tzdata tzdata/Areas select Europe" > /tmp/preseed.txt
     - echo "tzdata tzdata/Zones/Europe select Berlin" >> /tmp/preseed.txt
     - debconf-set-selections /tmp/preseed.txt
-    - apt update
-    - apt -y install gcc fakeroot dpkg-dev debhelper autoconf
-    - apt -y install autotools-dev libwrap0-dev po-debconf
-    - apt -y install debhelper osc python3-pip
+    - DEBIAN_FRONTEND=noninteractive apt update
+    - DEBIAN_FRONTEND=noninteractive apt -y install gcc fakeroot dpkg-dev debhelper autoconf
+    - DEBIAN_FRONTEND=noninteractive apt -y install autotools-dev libwrap0-dev po-debconf
+    - DEBIAN_FRONTEND=noninteractive apt -y install debhelper osc python3-pip
     - pip3 install --trusted-host pypi.uib.gmbh --index-url http://pypi.uib.gmbh:8080/simple opsi-dev-tools
   script:
    - ./configure
