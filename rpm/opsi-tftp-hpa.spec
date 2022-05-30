@@ -11,7 +11,7 @@ Group: 		Applications/Internet
 #Source0: http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.gz
 Source:         opsi-tftp-hpa_5.2.8-75.tar.gz
 %if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
-BuildRequires: systemd
+BuildRequires: systemd autoconf
 %else
 BuildRequires: tcpd-devel systemd-rpm-macros
 %endif
