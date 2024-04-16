@@ -1,3 +1,9 @@
+opsi-tftp-hpa (5.2.8-80) testing; urgency=low
+
+  * debian: relying on dh_install
+
+ -- Mathias Radtke <m.radtke@uib.de> Tue, 16 Apr 2042 12:55:00 +0200
+
 opsi-tftp-hpa (5.2.8-79) testing; urgency=low
 
   * debian: corrected service file location
