@@ -1,3 +1,9 @@
+opsi-tftp-hpa (5.2.8.83) testing; urgency=low
+
+  * updated debian/rules file with debian package default
+
+ -- Mathias Radtke <m.radtke@uib.de>  Wed, 05 Feb 2025 14:22:00 +0200
+
 opsi-tftp-hpa (5.2.8.82) testing; urgency=low
 
   * fixed missing files in tar file
