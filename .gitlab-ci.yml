@@ -5,8 +5,8 @@ stages:
   - release
 
 .install_tools: &install_tools |
-  sudo apt update
-  sudo apt -y install wget cpio unar
+  apt update
+  apt -y install wget cpio unar
   wget "$OPSIDEVTOOLS_URL_LINUX_X64" -O opsi-dev-tools.tar.gz
   tar -xvf opsi-dev-tools.tar.gz
   cp opsi-dev-tool opsi-dev-cli
