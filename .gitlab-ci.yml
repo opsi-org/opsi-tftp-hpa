@@ -1,4 +1,4 @@
-image: ubuntu:yammy
+image: docker.uib.gmbh/opsi/dev/pybuilder:uib-python-default
 
 stages:
   - package
