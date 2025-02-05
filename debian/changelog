@@ -1,5 +1,11 @@
 opsi-tftp-hpa (5.2.8.81) testing; urgency=low
 
+  * fixed missing files in tar file
+
+ -- Mathias Radtke <m.radtke@uib.de>  Wed, 05 Feb 2025 14:22:00 +0200
+
+opsi-tftp-hpa (5.2.8.81) testing; urgency=low
+
   * using updated code base
 
  -- Mathias Radtke <m.radtke@uib.de>  Wed, 05 Feb 2025 10:22:00 +0200

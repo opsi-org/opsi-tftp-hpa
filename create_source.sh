@@ -34,11 +34,15 @@ find ${tmpdir} -iname "*.pyc"   -exec rm "{}" \;
 find ${tmpdir} -iname "*.marks" -exec rm "{}" \;
 find ${tmpdir} -iname "*~"      -exec rm "{}" \;
 find ${tmpdir} -iname "*.svn"   -exec rm -rf "{}" \; 2>/dev/null
-find ${tmpdir} -iname ".git"      -exec rm -rf "{}" \;
+find ${tmpdir} -iname ".git*"      -exec rm -rf "{}" \;
 find ${tmpdir} -iname "opsi-dev*" -exec rm "{}" \;
+find ${tmpdir} -iname "tftp-hpa_*" -exec rm "{}" \;
+find ${tmpdir} -iname "tftp-hpa-*" -exec rm -rf "{}" \;
 
 cd ${tmpdir}/
-dpkg-buildpackage -S
+./autogen.sh
+./configure
+dpkg-buildpackage -S -nc
 mv ${tmpdir}/../${packagename}_${version}.tar.gz $destdir/
 mv ${tmpdir}/../${packagename}_${version}.dsc    $destdir/
 #rm -rf $tmpdir
