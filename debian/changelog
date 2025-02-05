@@ -1,4 +1,4 @@
-opsi-tftp-hpa (5.2.8.81) testing; urgency=low
+opsi-tftp-hpa (5.2.8.82) testing; urgency=low
 
   * fixed missing files in tar file
 
