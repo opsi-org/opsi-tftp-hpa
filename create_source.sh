@@ -35,6 +35,7 @@ find ${tmpdir} -iname "*.marks" -exec rm "{}" \;
 find ${tmpdir} -iname "*~"      -exec rm "{}" \;
 find ${tmpdir} -iname "*.svn"   -exec rm -rf "{}" \; 2>/dev/null
 find ${tmpdir} -iname ".git"      -exec rm -rf "{}" \;
+find ${tmpdir} -iname "opsi-dev*" -exec rm "{}" \;
 
 cd ${tmpdir}/
 dpkg-buildpackage -S
