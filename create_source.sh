@@ -7,11 +7,9 @@ dir=$(dirname ${cwd}/$(dirname $0))
 
 packagename=$(basename rpm/*.spec .spec)
 version=$(head -n1 debian/changelog | cut -d'(' -f2 | cut -d')' -f1 | cut -d'-' -f1)
-release=$(head -n1 debian/changelog | cut -d'(' -f2 | cut -d')' -f1 | cut -d'-' -f2)
 tmpdir=/tmp/${packagename}-${version}
 echo $packagename
 echo $version
-echo $release
 echo $tmpdir
 
 
@@ -23,8 +21,7 @@ rm ${destdir}/${packagename}*.spec    2>/dev/null || true
 cp rpm/${packagename}.spec /tmp/
 cat /tmp/${packagename}.spec \
         | sed "s/^Version:.*/Version:        ${version}/" \
-        | sed "s/^Release:.*/Release:        ${release}/" \
-        | sed "s/^Source:.*/Source:         ${packagename}_${version}-${release}.tar.gz/" \
+        | sed "s/^Source:.*/Source:         ${packagename}_${version}.tar.gz/" \
         | sed -ne '1,/%changelog/p' \
         > rpm/${packagename}.spec
 rm /tmp/${packagename}.spec
@@ -41,12 +38,12 @@ find ${tmpdir} -iname ".git"      -exec rm -rf "{}" \;
 
 cd ${tmpdir}/
 dpkg-buildpackage -S
-mv ${tmpdir}/../${packagename}_${version}-${release}.tar.gz $destdir/
-mv ${tmpdir}/../${packagename}_${version}-${release}.dsc    $destdir/
+mv ${tmpdir}/../${packagename}_${version}.tar.gz $destdir/
+mv ${tmpdir}/../${packagename}_${version}.dsc    $destdir/
 #rm -rf $tmpdir
 echo "============================================================================================="
-echo "source archive: ${destdir}/${packagename}_${version}-${release}.tar.gz"
-echo "dsc file:       ${destdir}/${packagename}_${version}-${release}.dsc"
+echo "source archive: ${destdir}/${packagename}_${version}.tar.gz"
+echo "dsc file:       ${destdir}/${packagename}_${version}.dsc"
 echo "spec file:      ${destdir}/${packagename}.spec"
 echo "============================================================================================="
 cd $cwd
