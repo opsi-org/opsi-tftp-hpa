@@ -1,8 +1,14 @@
+opsi-tftp-hpa (5.2.8.81) testing; urgency=low
+
+  * using updated code base
+
+ -- Mathias Radtke <m.radtke@uib.de> Wed, 05 Feb 2025 10:22:00 +0200
+
 opsi-tftp-hpa (5.2.8-80) testing; urgency=low
 
   * debian: relying on dh_install
 
- -- Mathias Radtke <m.radtke@uib.de> Tue, 16 Apr 2042 12:55:00 +0200
+ -- Mathias Radtke <m.radtke@uib.de> Tue, 16 Apr 2024 12:55:00 +0200
 
 opsi-tftp-hpa (5.2.8-79) testing; urgency=low
 
