@@ -37,9 +37,9 @@ package for OBS:
     - version=$(head -n1 debian/changelog | cut -d'(' -f2 | cut -d')' -f1 | cut -d'-' -f1)
     - '[ "$CI_COMMIT_TAG" = "" ] && ./opsi-dev-cli -l info binary push --product=opsi-tftp-hpa --architecture=x64 --system=linux --version=$version~$CI_JOB_ID opsi-tftp-hpa'
     - '[ "$CI_COMMIT_TAG" = "" ] || ./opsi-dev-cli -l info binary push --product=opsi-tftp-hpa --architecture=x64 --system=linux --version=$version opsi-tftp-hpa'
-    - '[ "$CI_COMMIT_TAG" = "" ] || opsi-dev-tool  -l info --obs-replace-files https://build.opensuse.org home:uibmz:opsi:4.3:development opsi-tftp-hpa opsi-tftp-hpa_*.tar.gz opsi-tftp-hpa_*.dsc opsi-tftp-hpa.spec
-    - '[ "$CI_COMMIT_TAG" = "" ] || opsi-dev-cli -l info release-service register-package-version opsi-tftp-hpa SERVER_PACKAGE --version="$version" --changelog-file=debian/changelog
-    - '[ "$CI_COMMIT_TAG" = "" ] || opsi-dev-cli -l info release-service push-repository-state opsi-tftp-hpa SERVER_PACKAGE SERVER_PACKAGE-4.4-development --version="$version"
+    - '[ "$CI_COMMIT_TAG" = "" ] || opsi-dev-tool  -l info --obs-replace-files https://build.opensuse.org home:uibmz:opsi:4.3:development opsi-tftp-hpa opsi-tftp-hpa_*.tar.gz opsi-tftp-hpa_*.dsc opsi-tftp-hpa.spec'
+    - '[ "$CI_COMMIT_TAG" = "" ] || opsi-dev-cli -l info release-service register-package-version opsi-tftp-hpa SERVER_PACKAGE --version="$version" --changelog-file=debian/changelog'
+    - '[ "$CI_COMMIT_TAG" = "" ] || opsi-dev-cli -l info release-service push-repository-state opsi-tftp-hpa SERVER_PACKAGE SERVER_PACKAGE-4.4-development --version="$version"'
   artifacts:
     paths:
      - opsi-tftp-hpa_*.dsc
