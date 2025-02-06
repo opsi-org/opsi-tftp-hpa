@@ -11,7 +11,6 @@ release=$(head -n1 debian/changelog | cut -d'(' -f2 | cut -d')' -f1 | cut -d'-' 
 tmpdir=/tmp/${packagename}-${version}
 echo $packagename
 echo $version
-echo $release
 echo $tmpdir
 
 
@@ -23,7 +22,6 @@ rm ${destdir}/${packagename}*.spec    2>/dev/null || true
 cp rpm/${packagename}.spec /tmp/
 cat /tmp/${packagename}.spec \
         | sed "s/^Version:.*/Version:        ${version}/" \
-        | sed "s/^Release:.*/Release:        ${release}/" \
         | sed "s/^Source:.*/Source:         ${packagename}_${version}-${release}.tar.gz/" \
         | sed -ne '1,/%changelog/p' \
         > rpm/${packagename}.spec
@@ -37,10 +35,15 @@ find ${tmpdir} -iname "*.pyc"   -exec rm "{}" \;
 find ${tmpdir} -iname "*.marks" -exec rm "{}" \;
 find ${tmpdir} -iname "*~"      -exec rm "{}" \;
 find ${tmpdir} -iname "*.svn"   -exec rm -rf "{}" \; 2>/dev/null
-find ${tmpdir} -iname ".git"      -exec rm -rf "{}" \;
+find ${tmpdir} -iname ".git*"      -exec rm -rf "{}" \;
+find ${tmpdir} -iname "opsi-dev*" -exec rm "{}" \;
+find ${tmpdir} -iname "tftp-hpa_*" -exec rm "{}" \;
+find ${tmpdir} -iname "tftp-hpa-*" -exec rm -rf "{}" \;
 
 cd ${tmpdir}/
-dpkg-buildpackage -S
+./autogen.sh
+./configure
+dpkg-buildpackage -S -nc
 mv ${tmpdir}/../${packagename}_${version}-${release}.tar.gz $destdir/
 mv ${tmpdir}/../${packagename}_${version}-${release}.dsc    $destdir/
 #rm -rf $tmpdir

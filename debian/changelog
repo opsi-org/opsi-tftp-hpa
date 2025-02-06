@@ -1,26 +1,32 @@
+opsi-tftp-hpa (5.2.9-1) testing; urgency=low
+
+  * using updated code base
+
+ -- Mathias Radtke <m.radtke@uib.de>  Wed, 05 Feb 2025 10:22:00 +0200
+
 opsi-tftp-hpa (5.2.8-80) testing; urgency=low
 
   * debian: relying on dh_install
 
- -- Mathias Radtke <m.radtke@uib.de> Tue, 16 Apr 2042 12:55:00 +0200
+ -- Mathias Radtke <m.radtke@uib.de>  Tue, 16 Apr 2024 12:55:00 +0200
 
 opsi-tftp-hpa (5.2.8-79) testing; urgency=low
 
   * debian: corrected service file location
 
- -- Mathias Radtke <m.radtke@uib.de> Tue, 16 Apr 2042 08:55:00 +0200
+ -- Mathias Radtke <m.radtke@uib.de>  Tue, 16 Apr 2042 08:55:00 +0200
 
 opsi-tftp-hpa (5.2.8-78) testing; urgency=low
 
   * spec: added autoconf as RHEL/Rocky/Alma build dependency
 
- -- Mathias Radtke <m.radtke@uib.de> Mon, 30 May 2022 10:55:00 +0200
+ -- Mathias Radtke <m.radtke@uib.de>  Mon, 30 May 2022 10:55:00 +0200
 
 opsi-tftp-hpa (5.2.8-77) testing; urgency=low
 
   * debian/rules: removed dh-systemd dependency for Ubuntu 22.04 support
 
- -- Mathias Radtke <m.radtke@uib.de> Thu, 17 Mar 2022 14:55:00 +0200
+ -- Mathias Radtke <m.radtke@uib.de>  Thu, 17 Mar 2022 14:55:00 +0200
 
 opsi-tftp-hpa (5.2.8-76) testing; urgency=medium
 
@@ -42,7 +48,7 @@ opsi-tftp-hpa (5.2.8-74) testing; urgency=medium
 
 opsi-tftp-hpa (5.2.8-73) testing; urgency=medium
 
-  * sdebian/rules: no more tftp builds
+  * debian/rules: no more tftp builds
 
  -- Mathias Radtke <m.radtke@uib.de>  Thu, 15 Jul 2021 12:30:00 +0100
 
