@@ -59,6 +59,12 @@ make %{?_smp_mflags}
   #Adjusting tftpboot directory
   sed --in-place "s_/tftpboot_/var/lib/tftpboot_" "debian/opsi-tftpd-hpa.service" || true
 %endif
+
+%if 0%{?rhel_version} || 0%{?centos_version}
+  # enable only ipv4 in opsi-tftpd-hpa.service file
+  sed --in-place "s/-vvvvv --listen/-vvvvv --ipv4 --listen/g" "debian/opsi-tftpd-hpa.service" || true
+%endif
+
 #rm -rf ${RPM_BUILD_ROOT}
 install -D -m 644 debian/opsi-tftpd-hpa.service %{buildroot}%{_unitdir}/opsi-tftpd-hpa.service
 mkdir -p ${RPM_BUILD_ROOT}%{_bindir}
