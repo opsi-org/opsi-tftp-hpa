@@ -8,7 +8,7 @@ stages:
   apt update
   apt -y install wget cpio unar curl
   curl -sS "${OPSIDEVTOOLS_INSTALLER_URL_LINUX_X64}" | sh
-  ./opsi-cli --version
+  ./opsi-dev-cli --version
 
 package for OBS:
   stage: package
