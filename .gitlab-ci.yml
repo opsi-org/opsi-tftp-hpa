@@ -6,7 +6,7 @@ stages:
 
 .install_tools: &install_tools |
   apt update
-  apt -y install wget cpio unar
+  apt -y install wget cpio unar curl
   curl -sS "${OPSIDEVTOOLS_INSTALLER_URL_LINUX_X64}" | sh
   ./opsi-cli --version
 
