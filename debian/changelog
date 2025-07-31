@@ -1,5 +1,12 @@
 opsi-tftp-hpa (5.2.9-3) testing; urgency=low
 
+  * spec fix
+
+ -- Fabian Kalweit <m.radtke@uib.de>  Thu, 31 Apr 2025 17:00:00 +0200
+
+
+opsi-tftp-hpa (5.2.9-3) testing; urgency=low
+
   * adding --ipv4 to service file on rpm systems with ipv6 disabled
 
  -- Mathias Radtke <m.radtke@uib.de>  Mon, 07 Apr 2025 14:20:00 +0200
