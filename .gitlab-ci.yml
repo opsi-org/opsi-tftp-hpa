@@ -34,7 +34,7 @@ package for OBS:
     - test -f opsi-tftp-hpa_*.dsc
     - test -f opsi-tftp-hpa_*.tar.gz
     - test -f opsi-tftp-hpa.spec
-    - wget "$OPSIDEVTOOLS_URL_LINUX_X64" -O opsi-dev-tools.tar.gz
+    - curl -sS "${OPSIDEVTOOLS_INSTALLER_URL_LINUX_X64}" | sh
     - tar -xvf opsi-dev-tools.tar.gz
     - cp opsi-dev-tool opsi-dev-cli
     - version=$(head -n1 debian/changelog | cut -d'(' -f2 | cut -d')' -f1 | cut -d'-' -f1)
