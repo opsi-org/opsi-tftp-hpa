@@ -1,5 +1,5 @@
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+%define _fillupdir /var/adm/fillup-templates
 %endif
 
 Summary: 	The client for the Trivial File Transfer Protocol (TFTP)
@@ -60,7 +60,7 @@ make %{?_smp_mflags}
   sed --in-place "s_/tftpboot_/var/lib/tftpboot_" "debian/opsi-tftpd-hpa.service" || true
 %endif
 
-%if 0%{?rhel_version} || 0%{?centos_version}
+%if 0%{?rhel_version} || 0%{?centos_version} || 0%{?rhel}
   # enable only ipv4 in opsi-tftpd-hpa.service file
   sed --in-place "s/-vvvvv --listen/-vvvvv --ipv4 --listen/g" "debian/opsi-tftpd-hpa.service" || true
 %endif
@@ -93,7 +93,7 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %post server
 arg0=$1
-%if 0%{?rhel_version} || 0%{?centos_version}
+%if 0%{?rhel_version} || 0%{?centos_version} || 0%{?rhel}
 %systemd_post opsi-tftpd-hpa.service
 %else
 %service_add_post opsi-tftpd-hpa.service 
@@ -113,7 +113,7 @@ if [ ! -z "$systemctl" -a -x "$systemctl" ]; then
 fi
 
 %preun server
-%if 0%{?rhel_version} || 0%{?centos_version}
+%if 0%{?rhel_version} || 0%{?centos_version} || 0%{?rhel}
 %systemd_preun opsi-tftpd-hpa.service 
 %else
 %service_del_preun opsi-tftpd-hpa.service
@@ -121,7 +121,7 @@ fi
 
 
 %postun server
-%if 0%{?rhel_version} || 0%{?centos_version}
+%if 0%{?rhel_version} || 0%{?centos_version} || 0%{?rhel}
 %systemd_postun opsi-tftpd-hpa.service
 %else
 %service_del_postun opsi-tftpd-hpa.service
