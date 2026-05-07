@@ -89,14 +89,18 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_sbindir}/useradd -c "TFTP account" -d %{opsitftpboot} -G tftp -g tftp \
   -r -s /bin/false tftp 2>/dev/null || :
 
-%service_add_pre opsi-tftpd-hpa.service
+%if 0%{?rhel_version} || 0%{?centos_version} || 0%{?rhel}
+  %systemd_pre opsi-tftpd-hpa.service
+%else
+  %service_add_pre opsi-tftpd-hpa.service
+%endif
 
 %post server
 arg0=$1
 %if 0%{?rhel_version} || 0%{?centos_version} || 0%{?rhel}
-%systemd_post opsi-tftpd-hpa.service
+  %systemd_post opsi-tftpd-hpa.service
 %else
-%service_add_post opsi-tftpd-hpa.service 
+  %service_add_post opsi-tftpd-hpa.service 
 %endif
 
 systemctl=`which systemctl 2>/dev/null` || true

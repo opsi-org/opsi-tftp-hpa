@@ -1,5 +1,11 @@
 opsi-tftp-hpa (5.2.9-5) testing; urgency=low
 
+  * fix spec file for redhat 8+
+
+ -- Fabian Kalweit <m.radtke@uib.de>  Thu, 31 Apr 2025 17:00:00 +0200
+
+opsi-tftp-hpa (5.2.9-5) testing; urgency=low
+
   * spec fix
 
  -- Fabian Kalweit <m.radtke@uib.de>  Thu, 31 Apr 2025 17:00:00 +0200
