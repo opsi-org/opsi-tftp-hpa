@@ -1,4 +1,4 @@
-opsi-tftp-hpa (5.2.9-5) testing; urgency=low
+opsi-tftp-hpa (5.2.9-6) testing; urgency=low
 
   * fix spec file for redhat 8+
 
