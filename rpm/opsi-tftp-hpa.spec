@@ -11,7 +11,7 @@ Group: 		Applications/Internet
 #Source0: http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.gz
 Source:         opsi-tftp-hpa_5.2.9.tar.gz
 %if 0%{?rhel} || 0%{?centos_version} >= 700
-BuildRequires: systemd autoconf
+BuildRequires: systemd systemd-rpm-macros autoconf
 %else
 BuildRequires: tcpd-devel systemd-rpm-macros
 %endif
@@ -80,7 +80,7 @@ install -d %{buildroot}%{_unitdir}
 install -D -m 0644 debian/opsi-tftpd-hpa.sysconfig %{buildroot}%{_fillupdir}/sysconfig.tftp
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
-%pre
+%pre server
 # This group/user is shared with atftp, so please
 # keep this in sync with atftp.spec
 # add group
