@@ -33,6 +33,7 @@ booting diskless workstations.  The tftp package provides the user
 interface for TFTP, which allows users to transfer files to and from a
 remote machine.  This program and TFTP provide very little security,
 and should not be enabled unless it is expressly needed.
+
 %package server
 Group: System Environment/Daemons
 Summary: The server for the Trivial File Transfer Protocol (TFTP).
@@ -89,10 +90,8 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_sbindir}/useradd -c "TFTP account" -d %{opsitftpboot} -G tftp -g tftp \
   -r -s /bin/false tftp 2>/dev/null || :
 
-%if 0%{?rhel_version} || 0%{?centos_version} || 0%{?rhel}
-  %systemd_pre opsi-tftpd-hpa.service
-%else
-  %service_add_pre opsi-tftpd-hpa.service
+%if 0%{?suse_version} || 0%{?is_opensuse}
+%service_add_pre opsi-tftpd-hpa.service
 %endif
 
 %post server
